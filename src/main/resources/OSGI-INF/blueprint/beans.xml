@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+	<bean id="restRouteRef"
+		class="com.redhat.shopping.demo.application.camel.routes.RestRoute" />
+
+	<!-- OSGi blueprint property placeholder -->
+	<cm:property-placeholder id="placeholder"
+		persistent-id="com.shopping.demo.salesforce" />
+
+
+	<bean id="twitterBuilder"
+		class="com.redhat.shopping.demo.application.camel.routes.TwitterRoute">
+		<property name="consumerKey" value="gos4wW1fh5z4UZ4QqiyJAat3v" />
+		<property name="consumerSecret"
+			value="FVcY63Op2EZjR1ccsFkTyZMMWKd6nibq3OLMLuEDgosh6wVp8s" />
+		<property name="accessToken"
+			value="2962717440-lJoAAnwWRJcR0mFGiiKXYodpHY0UIvQFl7FgCDr" />
+		<property name="accessTokenSecret"
+			value="lsJjmBJ3XYBizafCWQYhceuVicBVZPuqnupmLiMgDONzB" />
+	</bean>
+
+
+	<!-- <bean id="salesforce" class="org.apache.camel.component.salesforce.SalesforceComponent"> 
+		<property name="loginConfig"> <bean class="org.apache.camel.component.salesforce.SalesforceConfiguration"> 
+		<property name="clientId" value="${clientId}"/> <property name="clientSecret" 
+		value="${clientSecret}"/> <property name="userName" value="${userName}"/> 
+		<property name="password" value="${password}"/> </bean> </property> </bean> -->
+
+	<bean id="gauth" class="org.apache.camel.component.gae.auth.GAuthComponent">
+		<property name="consumerKey" value="anonymous" />
+		<property name="consumerSecret" value="anonymous" />
+	</bean>
+
+	<bean id="gauthRouteBuilder" class="com.redhat.shopping.demo.application.camel.routes.GauthRouteBuilder"></bean>
+	
+	<bean id="buyNewProduct"
+		class="com.redhat.shopping.demo.application.camel.routes.BuyNewProduct" />
+
+	<bean id="addProductRouteRef"
+		class="com.redhat.shopping.demo.application.camel.routes.AddProductRoute" />
+
+
+	<!-- this is the JDBC data source Config for mysql database -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/fuseshoppingdemo" />
+		<property name="username" value="root" />
+		<property name="password" value="admin" />
+	</bean>
+
+	<!-- configure the Camel SQL component to use the JDBC data source -->
+	<bean id="sql" class="org.apache.camel.component.sql.SqlComponent">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- configuring activemq -->
+
+
+	<bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="userName" value="admin" />
+		<property name="password" value="admin" />
+	</bean>
+
+	<bean id="logProductFetchTime"
+		class="com.redhat.shopping.demo.application.camel.beans.LogProductFetchTime" />
+
+	<bean id="buyProductValidation"
+		class="com.redhat.shopping.demo.application.camel.pojo.BuyProductValidation"></bean>
+</blueprint>
