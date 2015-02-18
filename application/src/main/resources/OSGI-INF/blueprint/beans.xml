@@ -13,12 +13,11 @@
 	<cxf:rsServer id="rsServer" address="${restservices.url}"
 		serviceClass="com.redhat.shopping.demo.application.camel.rest.ShoppingHomeService" />
 
-	<bean id="restRouteRef"
-		class="com.redhat.shopping.demo.application.camel.routes.RestRoute" />
+	<bean id="restRouteProcessor"
+		class="com.redhat.shopping.demo.application.camel.beans.RestRouteProcessor" />
 
 	<bean id="addProductRouteRef"
 		class="com.redhat.shopping.demo.application.camel.routes.AddProductRoute">
-		<property name="productDirectorySource" value="${productDirectorySource}"></property>
 	</bean>
 		
 	<bean id="buyNewProduct"
@@ -26,29 +25,6 @@
 
 	<!-- End -->
 
-
-	<!-- Social Related Beans Start -->
-	<bean id="salesForceRoute"
-		class="com.redhat.shopping.demo.application.camel.routes.SalesForceRoute">
-		<property name="loginConfig">
-			<bean class="org.apache.camel.component.salesforce.SalesforceLoginConfig">
-				<property name="clientId" value="${salesforce.clientId}" />
-				<property name="clientSecret" value="${salesforce.clientSecret}" />
-				<property name="userName" value="${salesforce.userName}" />
-				<property name="password" value="${salesforce.password}" />
-			</bean>
-		</property>
-	</bean>
-
-	<bean id="twitterBuilder"
-		class="com.redhat.shopping.demo.application.camel.routes.TwitterRoute">
-		<property name="consumerKey" value="${twitter.consumerKey}" />
-		<property name="consumerSecret" value="${twitter.consumerSecret}" />
-		<property name="accessToken" value="${twitter.accessToken}" />
-		<property name="accessTokenSecret" value="${twitter.accessTokenSecret}" />
-	</bean>
-
-	<!-- Social Related Beans End -->
 
 	<!-- Gauth Related Beans Start -->
 	<bean id="gauth" class="org.apache.camel.component.gae.auth.GAuthComponent">

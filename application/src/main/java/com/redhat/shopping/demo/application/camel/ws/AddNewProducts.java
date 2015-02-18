@@ -4,5 +4,5 @@ import javax.jws.WebService;
 
 @WebService
 public interface AddNewProducts {
-	String addProduct(String productsData);
+	void addProduct(String productsData);
 }

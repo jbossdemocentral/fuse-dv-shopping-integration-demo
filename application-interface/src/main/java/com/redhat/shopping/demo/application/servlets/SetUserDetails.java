@@ -38,7 +38,7 @@ public class SetUserDetails extends HttpServlet {
 		}
 		
 		//Once Retrieved the userContacts can be saved in a file or database
-		
+		request.getSession().setAttribute("userContacts", userContacts);
 		request.getSession().setAttribute("displayAuthentication", false);
 		response.sendRedirect("/shoppingApplication");
 		

@@ -48,10 +48,8 @@
 		<propertyPlaceholder location="classpath:sql.properties"
 			id="properties" />
 		<camel:routeBuilder id="addProductsRoute" ref="addProductRouteRef" />
-		<camel:routeBuilder id="twitterUpdateRoute" ref="twitterBuilder" />
 		<camel:routeBuilder id="buyNewProductRoute" ref="buyNewProduct"/>
 		<camel:routeBuilder id="gauthRouteBuilderRoute" ref="gauthRouteBuilder"/>
-		<!-- <camel:routeBuilder id="salesForceRouteRoute" ref="salesForceRoute"/> -->
 	</camelContext>
 
 </blueprint>

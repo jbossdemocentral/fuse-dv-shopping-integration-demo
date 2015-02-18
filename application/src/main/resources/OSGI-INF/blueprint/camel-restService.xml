@@ -5,8 +5,15 @@
 	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-  <camelContext xmlns="http://camel.apache.org/schema/blueprint" trace="false">
-	<camel:routeBuilder id="restMappingRoute" ref="restRouteRef" />
-  </camelContext>
+  <camelContext trace="false" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="restServiceRoute">
+        <from uri="cxfrs:bean:rsServer"/>
+        <process ref="restRouteProcessor"/>
+        <log message="${header.resourceMapping}"/>
+        <dynamicRouter>
+            <method ref="restRouteProcessor" method="slip"></method>
+        </dynamicRouter>
+    </route>
+</camelContext>
 
 </blueprint>
