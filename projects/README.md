@@ -1,4 +1,3 @@
 #Projects
 
-##application
-##application-interface
+##shopping-demo-application

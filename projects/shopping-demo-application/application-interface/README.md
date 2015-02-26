@@ -10,4 +10,5 @@ Build, Install and Deploy it as OSGi bundle:
     mvn clean install
 
 Then please enter this in the Karaf Console:
+
 	osgi:install -s war:mvn:com.redhat/application-interface/1.0.0-SNAPSHOT/war?Web-ContextPath=shoppingApplication
