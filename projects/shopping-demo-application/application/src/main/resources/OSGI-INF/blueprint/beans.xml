@@ -60,9 +60,10 @@
 
 	<!-- configuring activemq Start -->
 	<bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
-		<property name="brokerURL" value="${activemq.brokerUrl}" />
-		<property name="userName" value="${activemq.user}" />
-		<property name="password" value="${activemq.password}" />
+		<property name="brokerURL" value="vm:localhost" />
+		<!-- <property name="brokerURL" value="${activemq.brokerUrl}" /> <property 
+			name="userName" value="${activemq.user}" /> <property name="password" value="${activemq.password}" 
+			/> -->
 	</bean>
 	<!-- Configuring activemq End -->
 

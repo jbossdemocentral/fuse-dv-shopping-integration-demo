@@ -1,5 +1,6 @@
 /target
-/activemq-data
+
+activemq-data/
 
 *.pydevproject
 .metadata
