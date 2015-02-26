@@ -26,11 +26,9 @@ echo "Starting JBoss Data Virtualization"
 echo
 nohup $DV_DIR/bin/standalone.sh > dv.log 2>&1 </dev/null & 
 
-	cd projects/shopping-demo-application/application-interface
-	mvn clean install -DskipTests    
-	cd ../application
-	mvn clean install -DskipTests  
-	cd ../..
+	cd projects/shopping-demo-application
+	mvn clean install -DskipTests      
+	cd ..
 	$FUSE_DIR/bin/client -u admin -p admin "osgi:install -s war:mvn:com.redhat/application-interface/1.0.0-SNAPSHOT/war?Web-ContextPath=shoppingApplication" -r 3
 	$FUSE_DIR/bin/client -u admin -p admin "osgi:install  -s wrap:mvn:mysql/mysql-connector-java/5.0.5" -r 3
 	$FUSE_DIR/bin/client -u admin -p admin "osgi:install -s wrap:mvn:commons-dbcp/commons-dbcp/1.4" -r 3

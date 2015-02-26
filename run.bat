@@ -30,9 +30,7 @@ echo.
 
 start "" "%DV_DIR%\bin\standalone.bat"
 
-	call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\application-interface\pom.xml" clean install -DskipTests
-
-	call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\application\pom.xml" clean install -DskipTests
+	call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" clean install -DskipTests
 
 	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s war:mvn:com.redhat/application-interface/1.0.0-SNAPSHOT/war?Web-ContextPath=shoppingApplication"
 	
