@@ -1,26 +1,27 @@
-Camel Router Project for Blueprint (OSGi)
-=========================================
+Application Project
+===================
+
+This project has the shopping application core services and routes. The project provides routes for rest,web,twitter and salesforce integration in the shopping application.
+
+Build
+-----
 
 To build this project use
 
-    mvn clean install -DskipTests
+    mvn clean install 
 
-To deploy the project in JBoss Fuse. The project will be deployes in a JBoss Fuse Fabric profile You can run the following command from its shell:
+Deployment
+----------
 
-    mvn fabric8:deploy -D skipTests
+1) To run this project use the following Maven goal
 
-Login to Fuse management console at:
+    mvn camel:run
 
-    http://localhost:8181    
-
-with username admin and password admin
-
-Connect to root container with login presented by console and edit application fabric profile to include the Teiid JDBC driver or use the following command in the bin/admin shell
-
-    profile-edit --bundles wrap:file:///$PATH/teiid-8.4.1-redhat-7-jdbc.jar application 1.0  
-
-Create container name c1 and add application and jboss-fuse-minimal profile or use the following command in the bin/admin shell
-
-    fabric:container-create-child --profile application --profile jboss-fuse-minimal root c1
-
-Open c1 container to view route under 'Diagram' tab
+2) To deploy the project in an OSGI container please enter this in the Karaf Console:
+	 osgi:install  -s wrap:mvn:mysql/mysql-connector-java/5.0.5
+	 osgi:install -s wrap:mvn:commons-dbcp/commons-dbcp/1.4
+	 features:install camel-sql
+	 features:install camel-twitter
+	 features:install  camel-jackson
+	 features:install camel-salesforce
+     osgi:install -s wrap:mvn:com.redhat/application/1.0.0-SNAPSHOT

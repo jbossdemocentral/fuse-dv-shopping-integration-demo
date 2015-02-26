@@ -3,7 +3,7 @@ setlocal
 
 set PROJECT_HOME=%~dp0
 set DEMO=Fuse API Best Practices:Shopping Application Demo
-set AUTHORS=Accenture-Ankit Verma,Bhoomika Sharma
+set AUTHORS=Accenture-Ankit Verma
 set PROJECT=https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo.git
 set PRODUCT=Fuse API Best Practices:Shopping Application Demo
 set JBOSS_HOME=%PROJECT_HOME%target\jboss-eap-6.1
@@ -144,7 +144,7 @@ echo.
 
 echo  - enabling useCase 3 properties file...
 echo.
-xcopy /Y /Q "%FUSE_SUPPORT_DIR%\com.demo.usecase3.odata.cfg" "%SERVER_CONF_FUSE%"
+xcopy /Y /Q "%FUSE_SUPPORT_DIR%\com.redhat.application.cfg" "%SERVER_CONF_FUSE%"
 echo. 
 
 REM Final instructions to user to start and run demo.                                                                  

@@ -3,9 +3,9 @@ setlocal
 
 REM Start a JBoss Data Virtualization and JBoss Fuse environment.
 REM 
-REM This script expects JBoss Fuse to be running in order to start the c1 container
+REM This script expects JBoss Fuse to be running in order to start the shopping application
 REM
-REM author: cojan.van.ballegooijen@redhat.com, andy.block@gmail.com
+REM author: ankit.b.verma@accenture.com
 REM
 
 set PROJECT_HOME=%~dp0
@@ -30,16 +30,18 @@ echo.
 
 start "" "%DV_DIR%\bin\standalone.bat"
 
-if not exist "%FUSE_DIR%\instances\c1" (
-
-	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" "fabric:create --wait-for-provisioning"
 	call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\application-interface\pom.xml" clean install -DskipTests
-	call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\application-interface\pom.xml" fabric8:deploy -DskipTests
 
 	call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\application\pom.xml" clean install -DskipTests
-	call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\application\pom.xml" fabric8:deploy -DskipTests
 
-	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" "profile-edit --bundles wrap:file:///%DV_DIR:\=/%/dataVirtualization/jdbc/teiid-8.4.1-redhat-7-jdbc.jar application 1.0"
-	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" "fabric:container-create-child --profile application --profile application-interface --profile jboss-fuse-minimal root c1"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s war:mvn:com.redhat/application-interface/1.0.0-SNAPSHOT/war?Web-ContextPath=shoppingApplication"
 	
-)
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install  -s wrap:mvn:mysql/mysql-connector-java/5.0.5"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s wrap:mvn:commons-dbcp/commons-dbcp/1.4"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"features:install camel-sql"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"features:install camel-twitter"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"features:install  camel-jackson"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"features:install camel-salesforce"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin"    "osgi:install -s wrap:file://$DV_DIR/dataVirtualization/jdbc/teiid-8.4.1-redhat-7-jdbc.jar"
+	
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin"    "osgi:install -s wrap:mvn:com.redhat/application/1.0.0-SNAPSHOT"

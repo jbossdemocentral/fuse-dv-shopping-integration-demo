@@ -1,6 +1,6 @@
 #!/bin/sh 
 DEMO="Fuse API Best Practices:Shopping Application Demo" 
-AUTHORS="Accenture-Ankit Verma,Bhoomika Sharma"
+AUTHORS="Accenture-Ankit Verma"
 PROJECT="https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo.git"
 PRODUCT="Fuse API Best Practices:Shopping Application Demo"
 JBOSS_HOME=./target/jboss-eap-6.1
@@ -117,7 +117,7 @@ cp $FUSE_SUPPORT_DIR/users.properties $SERVER_CONF_FUSE
 
 echo "  - enabling useCase 3 properties file..."
 echo
-cp $FUSE_SUPPORT_DIR/com.demo.usecase3.odata.cfg $SERVER_CONF_FUSE
+cp $FUSE_SUPPORT_DIR/com.redhat.application.cfg $SERVER_CONF_FUSE
 
 
 

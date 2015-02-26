@@ -12,11 +12,6 @@
 	<packaging>war</packaging>
 	<name>application-interface Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
-	<properties>
-		<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles> 
-    	<fabric8.profile>application-interface</fabric8.profile>
-	</properties>
 
 	<dependencies>
 
@@ -91,6 +86,7 @@
 	</dependencies>
 	<build>
 		<finalName>application-interface</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -104,14 +100,6 @@
 					</archive>
 				</configuration>
 			</plugin>
-			<plugin>
-          		<groupId>io.fabric8</groupId>
-          		<artifactId>fabric8-maven-plugin</artifactId>
-          			<configuration>
-          				<webContextPath>shoppingApplication</webContextPath>
-          			</configuration>
-		  		<version>1.0.0.redhat-412</version>
-      		</plugin>
 		</plugins>
 	</build>
 </project>
