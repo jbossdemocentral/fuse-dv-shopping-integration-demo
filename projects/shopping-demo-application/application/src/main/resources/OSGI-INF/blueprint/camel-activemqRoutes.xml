@@ -50,6 +50,7 @@
         <log message="Executing {{sql.Products.updateProduct}}"/>
         <log message="Product Code value ${header.productCode}"/>
         <to uri="sql:{{sql.Products.updateProduct}}"/>
+        <to uri="vm:recordTransaction"/>
     </route>
 </camelContext>
 
