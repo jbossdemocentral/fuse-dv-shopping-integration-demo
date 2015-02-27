@@ -83,15 +83,6 @@
 			<version>1.4</version>
 		</dependency>
 
-		
-		<!--My Sql Driver -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.0.5</version>
-		</dependency>
-
-
 		<!-- the ActiveMQ client with connection pooling -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
@@ -147,6 +138,15 @@
 			<artifactId>spring-context</artifactId>
 			<version>3.2.8.RELEASE</version>
 		</dependency>
+		
+		<!-- Teiid Driver -->
+		<dependency>
+			<groupId>org.jboss.teiid</groupId>
+			<artifactId>teiid-client</artifactId>
+			<version>8.4.1-redhat-7</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/teiid-8.4.1-redhat-7-jdbc.jar</systemPath>
+		</dependency>
 
 	
 	</dependencies>
@@ -185,7 +185,7 @@
           <instructions>
             <Bundle-SymbolicName>shopping-application</Bundle-SymbolicName>
 						<Private-Package>com.redhat.shopping.demo.application.*</Private-Package>
-						<Import-Package>com.mysql.jdbc,org.apache.camel.component.salesforce,*</Import-Package>
+						<Import-Package>org.teiid.jdbc,org.apache.camel.component.salesforce,*</Import-Package>
             <DynamicImport-Package>*</DynamicImport-Package>
           </instructions>
         </configuration>

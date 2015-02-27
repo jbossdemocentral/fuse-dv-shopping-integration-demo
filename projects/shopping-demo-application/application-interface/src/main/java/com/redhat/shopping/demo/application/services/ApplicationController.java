@@ -2,6 +2,8 @@ package com.redhat.shopping.demo.application.services;
 
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -26,18 +28,40 @@ import com.redhat.shopping.demo.application.beans.User;
 @RequestMapping("/")
 public class ApplicationController {
 
-    @Autowired
+	private static final String REST_SERVER = "http://localhost:9090/";
+    private static final String ALL_PRODUCTS_REST = "route/shoppingApplication/products/";
+	@Autowired
     private TokenLoginService service;
     
     @RequestMapping(method = RequestMethod.GET,value={"buy"})
     public String handleBuy(HttpServletRequest request,Model model) throws Exception {
 		String productCode = request.getParameter("productCode");
-    	StringBuffer buyResult = fetchRestResponse("http://localhost:9090/route/shoppingApplication/products/"+productCode+"/buy");
+		User userDetails = (User) request.getSession().getAttribute("userDetails");
+		String url = createBuyUrl(productCode,userDetails);
+    	StringBuffer buyResult = fetchRestResponse(url);
+    	
 		model.addAttribute("buyResult",buyResult.toString());
         return "/homePage.jsp";        
     }
 
-    @RequestMapping(method = RequestMethod.GET,value={"authenticate"})
+    private String createBuyUrl(String productCode, User userDetails) throws UnsupportedEncodingException {
+    	String url = ALL_PRODUCTS_REST;
+    	if(validateString(productCode)){
+    		url = url.concat(productCode);
+    	}
+    	url = url.concat("/buy");
+    	if(userDetails!=null){
+    		url = url.concat("?customerDetails="+URLEncoder.encode(userDetails.getUserName()+"-"+userDetails.getEmailId(),"UTF-8"));
+    	}
+		
+    	return url;
+	}
+
+	private boolean validateString(String str) {
+		return str !=null && !str.isEmpty();
+	}
+
+	@RequestMapping(method = RequestMethod.GET,value={"authenticate"})
     public String handleAuthenticate(
             HttpServletRequest request, 
             HttpServletResponse response, 
@@ -67,17 +91,16 @@ public class ApplicationController {
     @RequestMapping(method = RequestMethod.GET,value={"show"})
     public String handleShow(ModelMap model) throws Exception {
     	
-    	StringBuffer showProducts = fetchRestResponse("http://localhost:9090/route/shoppingApplication/products/");
+    	StringBuffer showProducts = fetchRestResponse(ALL_PRODUCTS_REST);
 		model.addAttribute("showProducts",showProducts.toString());
         return "/homePage.jsp";               
     }
 
-   
-    
-    private StringBuffer fetchRestResponse(String url)
+
+    private static StringBuffer fetchRestResponse(String url)
 			throws IOException, ClientProtocolException {
 		HttpClient client = new DefaultHttpClient();
-		HttpGet request = new HttpGet(url);
+		HttpGet request = new HttpGet(REST_SERVER+url);
 		HttpResponse response = client.execute(request);
 		StringBuffer buyResult  = new StringBuffer(IOUtils.toString(response.getEntity().getContent()));
 		return buyResult;

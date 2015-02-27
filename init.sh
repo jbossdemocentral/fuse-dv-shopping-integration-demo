@@ -115,7 +115,7 @@ echo "  - enabling demo accounts logins in users.properties file..."
 echo
 cp $FUSE_SUPPORT_DIR/users.properties $SERVER_CONF_FUSE
 
-echo "  - enabling useCase 3 properties file..."
+echo "  - enabling application properties file..."
 echo
 cp $FUSE_SUPPORT_DIR/com.redhat.application.cfg $SERVER_CONF_FUSE
 

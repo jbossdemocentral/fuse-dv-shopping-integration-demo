@@ -8,9 +8,8 @@
     <propertyPlaceholder location="classpath:sql.properties" id="properties"/>
     <route customId="true" id="recordTransactionRoute">
         <from uri="vm:recordTransaction"/>
-        <setHeader headerName="dateOfPurchase">
-            <simple>${date:now:yyyyMMdd}</simple>
-        </setHeader>
+        <to uri="sql:{{sql.transaction.history.transactionId}}"/>
+        <process ref="recordTransactionProcessor"/>
         <convertBodyTo type="java.lang.String"/>
         <log message="Adding the transaction record"/>
         <to uri="sql:{{sql.transaction.history}}"/>
@@ -18,3 +17,4 @@
 </camelContext>
 
 </blueprint>
+

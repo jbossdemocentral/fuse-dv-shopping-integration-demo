@@ -36,7 +36,7 @@ nohup $DV_DIR/bin/standalone.sh > dv.log 2>&1 </dev/null &
 	$FUSE_DIR/bin/client -u admin -p admin "features:install camel-twitter" -r 3
 	$FUSE_DIR/bin/client -u admin -p admin "features:install camel-jackson" -r 3
 	$FUSE_DIR/bin/client -u admin -p admin "features:install camel-salesforce" -r 3
-	$FUSE_DIR/bin/client -u admin -p admin "osgi:install -s wrap:file://$DV_DIR/dataVirtualization/jdbc/teiid-8.4.1-redhat-7-jdbc.jar" -r 3 
+	$FUSE_DIR/bin/client -u admin -p admin "osgi:install -s wrap:file:$DV_DIR/dataVirtualization/jdbc/teiid-8.4.1-redhat-7-jdbc.jar" -r 3 
 	$FUSE_DIR/bin/client -u admin -p admin "osgi:install -s wrap:mvn:com.redhat/application/1.0.0-SNAPSHOT" -r 3  
 
 # Some wait code. Wait till the system is ready. 
