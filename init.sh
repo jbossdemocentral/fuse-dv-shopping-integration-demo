@@ -86,9 +86,9 @@ echo
 cp $DV_SUPPORT_DIR/teiid* $SERVER_CONF_DV
 
 echo
-echo "  - move data files..."
+echo "  - move modules..."
 echo
-cp -R $DV_SUPPORT_DIR/data/* $JBOSS_HOME_DV/standalone/data
+cp -R $DV_SUPPORT_DIR/modules/* $JBOSS_HOME_DV/modules
 
 echo
 echo "  - move virtual database..."
@@ -119,6 +119,11 @@ echo "  - enabling application properties file..."
 echo
 cp $FUSE_SUPPORT_DIR/com.redhat.application.cfg $SERVER_CONF_FUSE
 
+
+echo
+echo "  - install teiid security files..."
+echo
+cp $DV_SUPPORT_DIR/teiid* $SERVER_CONF_DV
 
 
 # Final instructions to user to start and run demo.                                                                  
