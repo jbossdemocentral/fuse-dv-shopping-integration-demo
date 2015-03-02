@@ -6,15 +6,33 @@ This demo project will get you started with automatically installing two server 
 MySQL Setup
 ------------
 
-1) Install MySQL Database - http://dev.mysql.com/downloads/
-2) Install MySQL Workbench - http://dev.mysql.com/downloads/workbench/
-3) Start server using command 'sudo mysqld_safe &'
-4) Open Workbench
-5) Open SQL Tab to execute the content of the following query
-   projects/shopping-demo-application/application/sql/init.sql
+1. Install MySQL Database - http://dev.mysql.com/downloads/
 
-Once the mysql databases are created we can move to the installation and deployment section
-  
+2. Install MySQL Workbench - http://dev.mysql.com/downloads/workbench/
+
+3. Start server using command 'sudo mysqld_safe &'
+
+4. Open Workbench
+
+5. Open SQL Tab to execute the content of the following query
+   projects/shopping-demo-application/application/sql/init_mysql.sql
+
+PostgresSQL Setup
+------------
+
+1. Install the PostgreSQL server (http://www.postgresql.org/download/). 
+
+2. Open SQL Tab to execute the content of the following query
+   projects/shopping-demo-application/application/sql/init_mysql.sql
+
+
+Once the databases are created we can move to the installation and deployment section
+
+Configure the PROJECT.HOME/support/standalone.dv.xml file 
+----------------------------------------------------------
+
+The standalone.dv.xml holds the configuration of the datasources mapping to the JDV server. We have provided "postgres" as default username and password and for Postgres datasource and root as username and password for mysql. The user can change these values in standalone.dv xml found under /fuse-shoppng-aplication/support/dv-support.
+
 Installing Jboss and Deploying the Application  
 ----------------------------------------------    
 
@@ -26,4 +44,4 @@ Installing Jboss and Deploying the Application
   
 4. Run 'run.sh' or 'run.bat' to start the servers, create the container and deploy the bundles.  
   
-5. Sign onto the Fuse Management console and check the console log to see the output from the routes for the use cases.  You can also view the Camel Diagrams.  
+5. Sign onto the Fuse Management console and check the console log to see the output from the routes for the use cases.  You can also view the Camel Diagrams.
