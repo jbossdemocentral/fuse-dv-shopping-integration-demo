@@ -7,55 +7,7 @@
 <head>
 <link rel="stylesheet" href="/shoppingApplication/css/styles.css" type="text/css"/>	
 <script src='/shoppingApplication/js/jquery.min.js'></script>
-<script>
-	var cookies;
-	function readCookie(name) {
-		if (cookies) {
-			return cookies[name];
-		}
-
-		var c = document.cookie.split('; ');
-		cookies = {};
-		var C;
-		for (var i = c.length - 1; i >= 0; i--) {
-			C = c[i].split('=');
-			cookies[C[0]] = C[1];
-		}
-
-		return cookies[name];
-	}
-
-	window.readCookie = readCookie; // or expose it however you want
-
-	function showProducts() {
-		var form = document.getElementById("formId");
-		form.setAttribute("action", "/shoppingApplication/application/show");
-		form.setAttribute("method", "get");
-		form.submit();
-
-	}
-
-
-	function createInputBuyProducts() {
-		if (readCookie("ACCESS-TOKEN")) {
-			$('#userInput').html("");
-			$('#userInput')
-					.html(
-							"<form id='buyProductTemplate' method='get' action='/shoppingApplication/application/buy'><input type='text' name='productCode'/> "
-									+ "<input type='submit' id='buyProducts' value='Buy' /></form>");
-		} else {
-			authenticateUser();
-		}
-	}
-
-	function  authenticateUser() {
-		var form = document.getElementById("formId");
-		form.setAttribute("action", "/shoppingApplication/application/authenticate");
-		form.setAttribute("method", "get");
-		form.submit();
-		
-	}
-</script>
+<script src='/shoppingApplication/js/application.js'></script>
 <title>Shopping Application</title>
 </head>
 <body>
@@ -73,4 +25,5 @@
 </body>
 </html>
 <%@ include file="result.jsp"%>
+<%@ include file="lastTransactions.jsp"%>
 <%@ include file="bottom.jsp"%>

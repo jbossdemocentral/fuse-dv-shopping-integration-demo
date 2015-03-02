@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:camel="http://camel.apache.org/schema/blueprint"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+  <camelContext xmlns="http://camel.apache.org/schema/blueprint" trace="false" id="showTransactionsContext">
+    <propertyPlaceholder location="classpath:sql.properties"
+			id="properties" />
+		<route id="showTransactionsRoute">
+			<from uri="vm:showPreviousTransactions" />
+			<convertBodyTo type="java.lang.String" />
+			<setHeader headerName="customerDetails">
+				<simple>${body}</simple>
+			</setHeader>
+			<log message="${headers.customerDetails}=user email id"/>
+			<to uri="sql:{{sql.transactions.findbyuser}}" />
+			<log message="found in DB ${body}" />
+			<marshal>
+				<json library="Jackson" />
+			</marshal>
+			<setHeader headerName="CamelCxfRsUsingHttpAPI">
+				<constant>TRUE</constant>
+			</setHeader>
+			<setHeader headerName="Accept">
+				<constant>application/json</constant>
+			</setHeader>
+			<convertBodyTo type="java.lang.String" />
+		</route>
+  </camelContext>
+
+</blueprint>

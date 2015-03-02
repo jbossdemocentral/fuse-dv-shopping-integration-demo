@@ -2,6 +2,6 @@
 <% 
 User userDetails = (User)session.getAttribute("userDetails");
 if(userDetails!=null){%>
-<a href="mailto:<%=userDetails.getEmailId()%>">Welcome <%=userDetails.getUserName()%></a>
+<a href="/shoppingApplication/application/showTransactions" title="Previous Transactions">Welcome <%=userDetails.getUserName()%></a>
 <%}%>
 

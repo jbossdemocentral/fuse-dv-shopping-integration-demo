@@ -27,5 +27,12 @@ public class ShoppingHomeService {
 		return null;
 	}
 	
+	@GET
+	@Path("/showTransactions")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String showPreviousTransactions(@QueryParam("customerDetails") String customerDetails){
+		return null;
+	}
+	
 	
 }

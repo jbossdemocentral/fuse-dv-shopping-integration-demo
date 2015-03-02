@@ -8,7 +8,7 @@ public class BuyNewProduct extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		onException(ValidationException.class).handled(true)
-		.transform().simple("The user details are missing in the request.");
+		.transform().simple("The user details are missing in the request. Please clear your cookies and try again");
 		from("vm:buyProductsByCode")
 		.log("Buy Request Started")
 		.log("${body}")
