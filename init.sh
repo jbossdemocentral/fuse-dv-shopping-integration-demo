@@ -80,25 +80,6 @@ java -jar $SRC_DIR/$DV $DV_SUPPORT_DIR/InstallationScript.xml
 read -p "Post DV install configuration <hit return or wait 5 seconds>" -t 5
 echo
 
-echo
-echo "  - install teiid security files..."
-echo
-cp $DV_SUPPORT_DIR/teiid* $SERVER_CONF_DV
-
-echo
-echo "  - move modules..."
-echo
-cp -R $DV_SUPPORT_DIR/modules/* $JBOSS_HOME_DV/modules
-
-echo
-echo "  - move virtual database..."
-echo
-cp -R $DV_SUPPORT_DIR/vdb $JBOSS_HOME_DV/standalone/deployments
-
-echo "  - setting up dv standalone.xml configuration adjustments..."
-echo
-cp $DV_SUPPORT_DIR/standalone.dv.xml $SERVER_CONF_DV/standalone.xml
-
 if [ -x target ]; then
   # Unzip the JBoss Fuse instance.
   echo Installing JBoss Fuse $FUSE_VERSION
@@ -124,6 +105,20 @@ echo
 echo "  - install teiid security files..."
 echo
 cp $DV_SUPPORT_DIR/teiid* $SERVER_CONF_DV
+
+echo
+echo "  - move modules..."
+echo
+cp -R $DV_SUPPORT_DIR/modules/* $JBOSS_HOME_DV/modules
+
+echo
+echo "  - move virtual database..."
+echo
+cp -R $DV_SUPPORT_DIR/vdb $JBOSS_HOME_DV/standalone/deployments
+
+echo "  - setting up dv standalone.xml configuration adjustments..."
+echo
+cp $DV_SUPPORT_DIR/standalone.dv.xml $SERVER_CONF_DV/standalone.xml
 
 
 # Final instructions to user to start and run demo.                                                                  

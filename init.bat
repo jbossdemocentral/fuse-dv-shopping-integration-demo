@@ -94,25 +94,6 @@ if not "%ERRORLEVEL%" == "0" (
 echo Post DV install configuration. Press any key or wait 5 seconds
 timeout 5
 
-echo.
-echo  - install teiid security files...
-echo.
-xcopy /Y /Q /S "%DV_SUPPORT_DIR%\teiid*" "%SERVER_CONF_DV%"
-
-
-echo.
-echo   - move modules...
-echo.
-xcopy /Y /Q /S "%DV_SUPPORT_DIR%\modules\*" "%JBOSS_HOME_DV%\modules"
-
-echo.
-echo   - move virtual database...
-echo.
-xcopy /Y /Q "%DV_SUPPORT_DIR%\vdb" "%JBOSS_HOME_DV%\standalone\deployments"
-
-echo   - setting up dv standalone.xml configuration adjustments...
-echo.
-xcopy /Y /Q "%DV_SUPPORT_DIR%\standalone.dv.xml" "%SERVER_CONF_DV%\standalone.xml"
 
 
 if exist "%PROJECT_HOME%\target" (
@@ -151,6 +132,22 @@ echo.
 echo  - install teiid security files...
 echo.
 xcopy /Y /Q /S "%DV_SUPPORT_DIR%\teiid*" "%SERVER_CONF_DV%"
+
+
+echo.
+echo   - move modules...
+echo.
+xcopy /Y /Q /S "%DV_SUPPORT_DIR%\modules\*" "%JBOSS_HOME_DV%\modules"
+
+echo.
+echo   - move virtual database...
+echo.
+xcopy /Y /Q "%DV_SUPPORT_DIR%\vdb" "%JBOSS_HOME_DV%\standalone\deployments"
+
+echo   - setting up dv standalone.xml configuration adjustments...
+echo.
+xcopy /Y /Q "%DV_SUPPORT_DIR%\standalone.dv.xml" "%SERVER_CONF_DV%\standalone.xml"
+
 
 
 REM Final instructions to user to start and run demo.                                                                  
