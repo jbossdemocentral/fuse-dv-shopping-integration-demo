@@ -46,7 +46,9 @@
 		serviceClass="com.redhat.shopping.demo.application.camel.rest.ShoppingHomeService" />
 
 	<bean id="restRouteProcessor"
-		class="com.redhat.shopping.demo.application.camel.beans.RestRouteProcessor" />
+		class="com.redhat.shopping.demo.application.camel.beans.RestRouteProcessor">
+		<property name="consumerType" value="vm"></property>
+	</bean>
 
 	<bean id="addProductRouteRef"
 		class="com.redhat.shopping.demo.application.camel.routes.AddProductRoute">

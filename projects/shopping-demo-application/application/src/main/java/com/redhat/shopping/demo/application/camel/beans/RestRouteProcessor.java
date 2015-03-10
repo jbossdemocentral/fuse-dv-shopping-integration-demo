@@ -6,13 +6,13 @@ import org.apache.camel.Processor;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
 
 public class RestRouteProcessor implements Processor {
-
+	private String consumerType;
 	public void process(Exchange exchange) throws Exception {
 		Message inMessage = exchange.getIn();
 		String operationName = inMessage.getHeader(
 				CxfConstants.OPERATION_NAME, String.class);
 		exchange.getIn().setHeader("resourceMapping",
-				"vm:" + operationName);
+				consumerType + ":" + operationName);
 		exchange.getIn().setHeader("awaitingResponse", true);
 	}
 	
@@ -23,6 +23,16 @@ public class RestRouteProcessor implements Processor {
 			return exchange.getIn().getHeader("resourceMapping", String.class);
 		}
 		return null;
+	}
+
+
+	public String getConsumerType() {
+		return consumerType;
+	}
+
+
+	public void setConsumerType(String consumerType) {
+		this.consumerType = consumerType;
 	}
 
 }

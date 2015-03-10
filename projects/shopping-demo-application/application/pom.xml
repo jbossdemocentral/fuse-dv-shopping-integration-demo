@@ -15,19 +15,19 @@
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.ow2.asm</groupId>
 			<artifactId>asm-all</artifactId>
 			<version>4.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jaxb</artifactId>
 			<version>${camel.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-xmljson</artifactId>
@@ -39,7 +39,7 @@
 			<artifactId>camel-jackson</artifactId>
 			<version>${camel.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-twitter</artifactId>
@@ -100,7 +100,7 @@
 			<version>5.9.0.redhat-610379</version>
 		</dependency>
 
-		
+
 		<!-- Salesforce component dependency for compiling SObject POJOs -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -126,8 +126,8 @@
 			<artifactId>activemq-kahadb-store</artifactId>
 			<version>5.9.0.redhat-610379</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-spring</artifactId>
@@ -138,7 +138,7 @@
 			<artifactId>spring-context</artifactId>
 			<version>3.2.8.RELEASE</version>
 		</dependency>
-		
+
 		<!-- Teiid Driver -->
 		<dependency>
 			<groupId>org.jboss.teiid</groupId>
@@ -147,61 +147,67 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/lib/teiid-8.4.1-redhat-7-jdbc.jar</systemPath>
 		</dependency>
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-test-blueprint</artifactId>
+			<version>${camel.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-	
 	</dependencies>
 
-	
 
- <build>
-    <defaultGoal>install</defaultGoal>
 
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.5.1</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
+	<build>
+		<defaultGoal>install</defaultGoal>
 
-      <!-- to generate the MANIFEST-FILE of the bundle -->
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <version>2.3.7</version>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Bundle-SymbolicName>shopping-application</Bundle-SymbolicName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- to generate the MANIFEST-FILE of the bundle -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>shopping-application</Bundle-SymbolicName>
 						<Private-Package>com.redhat.shopping.demo.application.*</Private-Package>
 						<Import-Package>org.teiid.jdbc,org.apache.camel.component.salesforce,*</Import-Package>
-            <DynamicImport-Package>*</DynamicImport-Package>
-          </instructions>
-        </configuration>
-      </plugin>
+						<DynamicImport-Package>*</DynamicImport-Package>
+					</instructions>
+				</configuration>
+			</plugin>
 
-      <!-- to run the example using mvn camel:run -->
-      <plugin>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-maven-plugin</artifactId>
-        <version>${camel.version}</version>
-        <configuration>
-          <useBlueprint>true</useBlueprint>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+			<!-- to run the example using mvn camel:run -->
+			<plugin>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-maven-plugin</artifactId>
+				<version>${camel.version}</version>
+				<configuration>
+					<useBlueprint>true</useBlueprint>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-  <name>Shopping Application Demo</name>
+	<name>Shopping Application Demo</name>
 </project>
