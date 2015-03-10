@@ -19,7 +19,7 @@ DV_SUPPORT_DIR=./support/dv-support
 FUSE_SUPPORT_DIR=./support/fuse-support
 PRJ_DIR=./projects
 FUSE=jboss-fuse-full-6.1.1.redhat-412.zip
-DV=jboss-dv-installer-6.0.0.GA-redhat-4.jar
+DV=jboss-dv-installer-6.1.0.Beta-redhat-1.jar
 FUSE_VERSION=6.1.1
 DV_VERSION=6.0.0
 

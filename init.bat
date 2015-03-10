@@ -22,7 +22,7 @@ set DV_SUPPORT_DIR=%SUPPORT_DIR%\dv-support
 set FUSE_SUPPORT_DIR=%SUPPORT_DIR%\fuse-support
 set PRJ_DIR=%PROJECT_HOME%projects
 set FUSE=jboss-fuse-full-6.1.1.redhat-412.zip
-set DV=jboss-dv-installer-6.0.0.GA-redhat-4.jar
+set DV=jboss-dv-installer-6.1.0.Beta-redhat-1.jar
 set FUSE_VERSION=6.1.1
 set DV_VERSION=6.0.0
 
