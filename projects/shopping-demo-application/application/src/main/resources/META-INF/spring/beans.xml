@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://camel.apache.org/schema/cxf  http://camel.apache.org/schema/cxf/camel-cxf.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:property-placeholder 
+	location="classpath:application.properties"
+			  ignore-unresolvable="true"/>
+	
+	<import resource="routes/camel*.xml"/>
+	<!--Web/Rest Services Beans Start -->
+
+	<cxf:cxfEndpoint id="productAddition" address="${webservices.url}"
+		serviceClass="com.redhat.shopping.demo.application.camel.ws.AddNewProducts" />
+
+	<cxf:rsServer id="rsServer" address="${restservices.url}"
+		serviceClass="com.redhat.shopping.demo.application.camel.rest.ShoppingHomeService" />
+
+	<bean id="restRouteProcessor"
+		class="com.redhat.shopping.demo.application.camel.beans.RestRouteProcessor">
+		<property name="consumerType" value="vm"></property>
+	</bean>
+
+	<bean id="addProductRouteRef"
+		class="com.redhat.shopping.demo.application.camel.routes.AddProductRoute">
+	</bean>
+
+	<bean id="buyNewProduct"
+		class="com.redhat.shopping.demo.application.camel.routes.BuyNewProduct" />
+
+	<!-- End -->
+
+
+	<!-- configuring activemq Start -->
+	<bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="brokerURL" value="${activemq.brokerUrl}" />
+		<property name="userName" value="${activemq.user}" />
+		<property name="password" value="${activemq.password}" />
+	</bean>
+	<!-- Configuring activemq End -->
+
+	<!-- this is the JDBC data source Config for mysql database -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${database.driverClassName}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+	</bean>
+
+	<!-- configure the Camel SQL component to use the JDBC data source -->
+	<bean id="sql" class="org.apache.camel.component.sql.SqlComponent">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<!-- Other Beans -->
+	<bean id="logProductFetchTime"
+		class="com.redhat.shopping.demo.application.camel.beans.LogProductFetchTime" />
+
+	<bean id="salesForceProductProcessor"
+		class="com.redhat.shopping.demo.application.camel.beans.SalesForceProductProcessor" />
+
+	<bean id="recordTransactionProcessor"
+		class="com.redhat.shopping.demo.application.camel.beans.RecordTransactionProcessor" />
+
+	<!-- End -->
+
+</beans>

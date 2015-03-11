@@ -6,12 +6,8 @@ set DEMO=Fuse API Best Practices:Shopping Application Demo
 set AUTHORS=Accenture-Ankit Verma
 set PROJECT=https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo.git
 set PRODUCT=Fuse API Best Practices:Shopping Application Demo
-set JBOSS_HOME=%PROJECT_HOME%target\jboss-eap-6.1
-set JBOSS_HOME_DV=%PROJECT_HOME%target\dv\jboss-eap-6.1
+set JBOSS_HOME_DV=%PROJECT_HOME%target\dv
 set JBOSS_HOME_FUSE=%PROJECT_HOME%target\fuse\jboss-fuse-6.1.1.redhat-412
-set SERVER_DIR=%JBOSS_HOME%\standalone\deployments\
-set SERVER_CONF=%JBOSS_HOME%\standalone\configuration\
-set SERVER_BIN=%JBOSS_HOME%\bin\
 set SERVER_BIN_DV=%JBOSS_HOME_DV%\bin\
 set SERVER_BIN_FUSE=%JBOSS_HOME_FUSE%\bin\
 set SERVER_CONF_DV=%JBOSS_HOME_DV%\standalone\configuration\
@@ -92,7 +88,7 @@ if not "%ERRORLEVEL%" == "0" (
 )
 
 echo Post DV install configuration. Press any key or wait 5 seconds
-timeout 5
+timeout 30
 
 
 

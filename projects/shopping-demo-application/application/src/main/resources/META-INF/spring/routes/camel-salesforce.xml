@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<bean id="salesforce"
+		class="org.apache.camel.component.salesforce.SalesforceComponent">
+		<property name="loginConfig">
+			<bean class="org.apache.camel.component.salesforce.SalesforceLoginConfig">
+				<property name="clientId" value="${salesforce.clientId}" />
+				<property name="clientSecret" value="${salesforce.clientSecret}" />
+				<property name="userName" value="${salesforce.userName}" />
+				<property name="password" value="${salesforce.password}" />
+			</bean>
+		</property>
+	</bean>
+	
+
+	<camelContext id="salesforce-example-context" xmlns="http://camel.apache.org/schema/spring">
+    <route id="salesforce-route">
+        <from uri="vm:salesforceUpdate"/>
+        <log message="Entered Sales Force Update Route"/>
+        <process ref="salesForceProductProcessor"/>
+        <log message="Creating Products with name ${body.name}..."/>
+        <to uri="salesforce:upsertSObject?sObjectName=ProductsObject__c&amp;sObjectIdName=Name"/>
+        <log message="Done creating Product with success=${body.success} and errors=${body.errors}"/>
+    </route>
+</camelContext>
+</beans>
