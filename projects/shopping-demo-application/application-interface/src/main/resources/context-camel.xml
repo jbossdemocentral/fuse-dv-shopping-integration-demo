@@ -26,7 +26,7 @@
          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-  <context:property-placeholder location="classpath:context.properties"/>
+  <context:property-placeholder location="classpath:application.properties"/>
 
   <camel:camelContext id="camelContext">
     <!-- JMX is not supported in GAE -->

@@ -12,6 +12,7 @@
 	<modules>
 		<module>application</module>
 		<module>application-interface</module>
+		<module>applicationCommon</module>
 	</modules>
 
 	<properties>

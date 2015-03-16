@@ -15,6 +15,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +26,9 @@ import com.redhat.shopping.demo.application.beans.User;
 
 @RequestMapping("/")
 public class ApplicationController {
-
-	private static final String REST_SERVER = "http://localhost:9090/";
-	private static final String REST_SERVICE = "route/shoppingApplication/";
-	private static final String ALL_PRODUCTS_REST = REST_SERVICE + "products/";
-	private static final String ALL_TRANSACTIONS = REST_SERVICE
-			+ "showTransactions";
+	@Value(value="${restservice.url}")
+	private String restServiceUrl;
+	
 	@Autowired
 	private TokenLoginService service;
 
@@ -49,7 +47,7 @@ public class ApplicationController {
 
 	private String createBuyUrl(String productCode, User userDetails)
 			throws UnsupportedEncodingException {
-		String url = ALL_PRODUCTS_REST;
+		String url = restServiceUrl + "products/";
 		if (validateString(productCode)) {
 			url = url.concat(productCode);
 		}
@@ -79,7 +77,7 @@ public class ApplicationController {
 			throws Exception {
 		User userDetails = (User) request.getSession().getAttribute(
 				"userDetails");
-		StringBuffer lastTransactions = fetchRestResponse(ALL_TRANSACTIONS
+		StringBuffer lastTransactions = fetchRestResponse(restServiceUrl  + "showTransactions"
 				+ "?customerDetails="
 				+ URLEncoder.encode(userDetails.getEmailId(), "UTF-8"));
 		model.addAttribute("lastTransactions", lastTransactions.toString());
@@ -104,15 +102,15 @@ public class ApplicationController {
 	@RequestMapping(method = RequestMethod.GET, value = { "show" })
 	public String handleShow(ModelMap model) throws Exception {
 
-		StringBuffer showProducts = fetchRestResponse(ALL_PRODUCTS_REST);
+		StringBuffer showProducts = fetchRestResponse(restServiceUrl + "products/");
 		model.addAttribute("showProducts", showProducts.toString());
 		return "/homePage.jsp";
 	}
 
-	private static StringBuffer fetchRestResponse(String url)
+	private  StringBuffer fetchRestResponse(String url)
 			throws IOException, ClientProtocolException {
 		HttpClient client = new DefaultHttpClient();
-		HttpGet request = new HttpGet(REST_SERVER + url);
+		HttpGet request = new HttpGet(restServiceUrl + url);
 		HttpResponse response = client.execute(request);
 		StringBuffer buyResult = new StringBuffer(IOUtils.toString(response
 				.getEntity().getContent()));
@@ -137,6 +135,14 @@ public class ApplicationController {
 			}
 		}
 		return null;
+	}
+
+	public String getRestServiceUrl() {
+		return restServiceUrl;
+	}
+
+	public void setRestServiceUrl(String restServiceUrl) {
+		this.restServiceUrl = restServiceUrl;
 	}
 
 }

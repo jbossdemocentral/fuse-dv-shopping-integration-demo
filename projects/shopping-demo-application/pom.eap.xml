@@ -10,10 +10,10 @@
 	<name>Shopping Apllication Demo Main</name>
 	<packaging>pom</packaging>
 	<modules>
-		<module>application</module>
-		<module>application-interface</module>
-		<module>applicationCommon</module>
-	</modules>
+	   <module>applicationEap</module>
+		 <module>applicationCommon</module>
+		 <module>application-interface</module>
+  </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,19 +30,30 @@
 			<name>Jboss EA Repository</name>
 			<url>https://repository.jboss.org/nexus/content/groups/ea</url>
 			<snapshots>
-
 				<enabled>false</enabled>
 			</snapshots>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
 		</repository>
+
+		<repository>
+				<id>all.redhat.com</id>
+				<name>Tech Preview All Repository</name>
+				<url>http://maven.repository.redhat.com/techpreview/all</url>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+		</repository>
+
 		<repository>
 			<id>maven2.maven.org</id>
 			<name>Central Maven Repository</name>
 			<url>http://central.maven.org/maven2</url>
 			<snapshots>
-
 				<enabled>false</enabled>
 			</snapshots>
 			<releases>
@@ -98,15 +109,18 @@
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-blueprint</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-spring</artifactId>
 			<version>${camel.version}</version>
 		</dependency>
+
+    <!-- test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+
 
 	</dependencies>
 </project>

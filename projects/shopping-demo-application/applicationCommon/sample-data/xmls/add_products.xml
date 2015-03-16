@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<products-list>
+	<products>
+		<productCode>testid1</productCode>
+		<productName>1985 test Toyota Supra</productName>
+		<productLine>Classic Cars</productLine>
+		<productScale>1:10</productScale>
+		<productVendor>Min Lin Diecast</productVendor>
+		<productDescription>This replica features working kickstand, front suspension, gear-shift lever, footbrake lever, drive chain, wheels and steering. All parts are particularly delicate due to their precise scale and require special care and attention.</productDescription>
+		<quantityInStock>7933</quantityInStock>
+		<buyPrice>48.81</buyPrice>
+		<MSRP>95.7</MSRP>
+	</products>
+	<products>
+		<productCode>testid2</productCode>
+		<productName>1904 test Buick Runabout</productName>
+		<productLine>Classic Cars</productLine>
+		<productScale>1:10</productScale>
+		<productVendor>Classic Metal Creations</productVendor>
+		<productDescription>Turnable front wheels; steering function; detailed interior; detailed engine; opening hood; opening trunk; opening doors; and detailed chassis.</productDescription>
+		<quantityInStock>7305</quantityInStock>
+		<buyPrice>98.58</buyPrice>
+		<MSRP>214.3</MSRP>
+	</products>
+	<products>
+		<productCode>testid3</productCode>
+		<productName>1948 test Porsche Type 356 Roadster</productName>
+		<productLine>Vintage Cars</productLine>
+		<productScale>1:10</productScale>
+		<productVendor>Highway 66 Mini Classics</productVendor>
+		<productDescription>Official Moto Guzzi logos and insignias, saddle bags located on side of motorcycle, detailed engine, working steering, working suspension, two leather seats, luggage rack, dual exhaust pipes, small saddle bag located on handle bars, two-tone paint with chrome accents, superior die-cast detail , rotating wheels , working kick stand, diecast metal with plastic parts and baked enamel finish.</productDescription>
+		<quantityInStock>6625</quantityInStock>
+		<buyPrice>68.99</buyPrice>
+		<MSRP>118.94</MSRP>
+	</products>
+</products-list>

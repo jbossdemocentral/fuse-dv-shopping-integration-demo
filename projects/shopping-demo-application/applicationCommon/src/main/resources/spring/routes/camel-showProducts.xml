@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<camelContext trace="false" id="clientServiceContext"
+		xmlns="http://camel.apache.org/schema/spring">
+		 <propertyPlaceholder location="classpath:sql.properties" id="properties"/>
+		<route id="clientServiceRoute">
+			<from uri="vm:showProducts" />
+			<aop beforeUri="bean:logProductFetchTime?method=logQueryTimeBefore"
+				afterUri="bean:logProductFetchTime?method=logQueryTimeAfter"
+				afterFinallyUri="bean:logProductFetchTime?method=logQueryTimeFinally">
+				<to uri="sql:{{sql.Products.findAll}}" />
+			</aop>
+			<log message="found in DB ${body}" />
+			<marshal>
+				<json library="Jackson" />
+			</marshal>
+			<setHeader headerName="CamelCxfRsUsingHttpAPI">
+				<constant>TRUE</constant>
+			</setHeader>
+			<setHeader headerName="Accept">
+				<constant>application/json</constant>
+			</setHeader>
+			<convertBodyTo type="java.lang.String" />
+		</route>
+	</camelContext>
+
+</beans>
