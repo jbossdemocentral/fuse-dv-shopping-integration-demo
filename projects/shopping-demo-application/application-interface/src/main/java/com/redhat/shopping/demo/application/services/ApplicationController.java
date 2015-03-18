@@ -26,9 +26,9 @@ import com.redhat.shopping.demo.application.beans.User;
 
 @RequestMapping("/")
 public class ApplicationController {
-	@Value(value="${restservice.url}")
+	@Value(value="${restservice.url.client}")
 	private String restServiceUrl;
-	
+
 	@Autowired
 	private TokenLoginService service;
 
@@ -47,7 +47,7 @@ public class ApplicationController {
 
 	private String createBuyUrl(String productCode, User userDetails)
 			throws UnsupportedEncodingException {
-		String url = restServiceUrl + "products/";
+		String url = "products/";
 		if (validateString(productCode)) {
 			url = url.concat(productCode);
 		}
@@ -77,7 +77,7 @@ public class ApplicationController {
 			throws Exception {
 		User userDetails = (User) request.getSession().getAttribute(
 				"userDetails");
-		StringBuffer lastTransactions = fetchRestResponse(restServiceUrl  + "showTransactions"
+		StringBuffer lastTransactions = fetchRestResponse("showTransactions"
 				+ "?customerDetails="
 				+ URLEncoder.encode(userDetails.getEmailId(), "UTF-8"));
 		model.addAttribute("lastTransactions", lastTransactions.toString());
@@ -102,7 +102,7 @@ public class ApplicationController {
 	@RequestMapping(method = RequestMethod.GET, value = { "show" })
 	public String handleShow(ModelMap model) throws Exception {
 
-		StringBuffer showProducts = fetchRestResponse(restServiceUrl + "products/");
+		StringBuffer showProducts = fetchRestResponse("products/");
 		model.addAttribute("showProducts", showProducts.toString());
 		return "/homePage.jsp";
 	}

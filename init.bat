@@ -28,7 +28,7 @@ cls
 echo.
 echo Setting up the %DEMO%
 echo.
-echo brought to you by,   
+echo brought to you by,
 echo   %AUTHORS%
 echo.
 echo   %PROJECT%
@@ -41,22 +41,12 @@ if %ERRORLEVEL% NEQ 0 (
 	GOTO :EOF
 )
 
-REM make some checks first before proceeding.	
+REM make some checks first before proceeding.
 if exist "%SRC_DIR%\%DV%" (
         echo JBoss product sources, %DV% is present...
         echo.
 ) else (
         echo Need to download %DV% package from the Customer Support Portal
-        echo and place it in the %SRC_DIR% directory to proceed...
-        echo.
-        GOTO :EOF
-)
-
-if exist "%SRC_DIR%\%FUSE%" (
-        echo JBoss product sources, %FUSE% is present...
-        echo.
-) else (
-        echo Need to download %FUSE% package from the Customer Support Portal
         echo and place it in the %SRC_DIR% directory to proceed...
         echo.
         GOTO :EOF
@@ -79,7 +69,7 @@ REM Run DV installer
 echo.
 echo Product installer running now...
 echo.
-call java -jar %SRC_DIR%\%DV% %DV_SUPPORT_DIR%\InstallationScript.xml 
+call java -jar %SRC_DIR%\%DV% %DV_SUPPORT_DIR%\InstallationScript.xml
 
 if not "%ERRORLEVEL%" == "0" (
 	echo Error Occurred During DV Installation!
@@ -92,43 +82,50 @@ timeout 30
 
 
 
-if exist "%PROJECT_HOME%\target" (
+if exist "%SRC_DIR%\%FUSE%" (
+        echo JBoss product sources, %FUSE% is present...
+        echo.
 
-	md "%PROJECT_HOME%\target\fuse"
-	REM Unzip the JBoss Fuse instance
-	echo Unpacking JBoss FUSE %VERSION%...
-	echo.
-	cscript /nologo "%SUPPORT_DIR%\unzip.vbs" "%SRC_DIR%\%FUSE%" "%PROJECT_HOME%\target\fuse"
+				if exist "%PROJECT_HOME%\target" (
 
-	if not "%ERRORLEVEL%" == "0" (
-		echo Error Occurred During Installation!
-		echo.
-		GOTO :EOF
-	)
-	
+					md "%PROJECT_HOME%\target\fuse"
+					REM Unzip the JBoss Fuse instance
+					echo Unpacking JBoss FUSE %VERSION%...
+					echo.
+					cscript /nologo "%SUPPORT_DIR%\unzip.vbs" "%SRC_DIR%\%FUSE%" "%PROJECT_HOME%\target\fuse"
+
+					if not "%ERRORLEVEL%" == "0" (
+						echo Error Occurred During Installation!
+						echo.
+						GOTO :EOF
+					)
+
+				) else (
+					echo.
+					echo Missing target directory, stopping installation.
+					echo.
+					GOTO :EOF
+				)
+
+
+				echo  - enabling demo accounts logins in users.properties file...
+				echo.
+				xcopy /Y /Q "%FUSE_SUPPORT_DIR%\users.properties" "%SERVER_CONF_FUSE%"
+				echo.
+
 ) else (
-	echo.
-	echo Missing target directory, stopping installation.
-	echo.
-	GOTO :EOF
+        echo Need to download %FUSE% package from the Customer Support Portal
+        echo and place it in the %SRC_DIR% directory to proceed...
+        echo Installing DV Server and adding application properties in it
+
 )
- 
 
-echo  - enabling demo accounts logins in users.properties file...
-echo.
-xcopy /Y /Q "%FUSE_SUPPORT_DIR%\users.properties" "%SERVER_CONF_FUSE%"
-echo. 
 
-echo  - enabling application properties file...
-echo.
-xcopy /Y /Q "%FUSE_SUPPORT_DIR%\com.redhat.application.cfg" "%SERVER_CONF_FUSE%"
-echo. 
 
 echo.
 echo  - install teiid security files...
 echo.
 xcopy /Y /Q /S "%DV_SUPPORT_DIR%\teiid*" "%SERVER_CONF_DV%"
-
 
 echo.
 echo   - move modules...
@@ -145,9 +142,8 @@ echo.
 xcopy /Y /Q "%DV_SUPPORT_DIR%\standalone.dv.xml" "%SERVER_CONF_DV%\standalone.xml"
 
 
-
-REM Final instructions to user to start and run demo.                                                                  
+REM Final instructions to user to start and run demo.
 echo.
-echo See Readme for any additional steps                   
+echo See Readme for any additional steps
 echo %DEMO% Setup Complete.
 echo.

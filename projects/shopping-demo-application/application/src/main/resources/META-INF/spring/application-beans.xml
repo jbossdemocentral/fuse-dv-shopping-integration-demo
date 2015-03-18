@@ -9,16 +9,17 @@
        http://camel.apache.org/schema/cxf  http://camel.apache.org/schema/cxf/camel-cxf.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:property-placeholder 
-	location="classpath:application.properties"
-			  ignore-unresolvable="true"/>
-	
+	<context:property-placeholder
+	location="classpath:application.properties,
+            ${envfile}"
+  ignore-unresolvable="true"/>
+
 	<import resource="classpath:spring/routes/*.xml"/>
 	<!--Web/Rest Services Beans Start -->
 
-	<cxf:cxfEndpoint id="productAddition" address="${webservices.url}"
+	<cxf:cxfEndpoint id="productAddition" address="${webservices.url.server}"
 		serviceClass="com.redhat.shopping.demo.application.camel.ws.AddNewProducts" />
 
-	<cxf:rsServer id="rsServer" address="${restservices.url}"
+	<cxf:rsServer id="rsServer" address="${restservices.url.server}"
 		serviceClass="com.redhat.shopping.demo.application.camel.rest.ShoppingHomeService" />
 </beans>

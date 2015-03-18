@@ -1,6 +1,6 @@
 Heap
  def new generation   total 4928K, used 369K [0x24740000, 0x24c90000, 0x29c90000)
-  eden space 4416K,   8% used [0x24740000, 0x2479c630, 0x24b90000)
+  eden space 4416K,   8% used [0x24740000, 0x2479c660, 0x24b90000)
   from space 512K,   0% used [0x24b90000, 0x24b90000, 0x24c10000)
   to   space 512K,   0% used [0x24c10000, 0x24c10000, 0x24c90000)
  tenured generation   total 10944K, used 0K [0x29c90000, 0x2a740000, 0x34740000)

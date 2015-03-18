@@ -12,10 +12,6 @@
 	<packaging>war</packaging>
 	<name>application-interface Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<properties>
-		<gae.consumer.key>annonymous</gae.consumer.key>
-		<gae.consumer.secret>annonymous</gae.consumer.secret>
-	</properties>
 	<dependencies>
 
 		<dependency>

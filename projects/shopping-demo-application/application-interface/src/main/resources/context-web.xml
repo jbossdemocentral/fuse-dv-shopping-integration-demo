@@ -32,6 +32,6 @@
 <bean id="buyProductsController" class="com.redhat.shopping.demo.application.services.ApplicationController"/>
 <bean id="tokenLoginService" class="com.redhat.shopping.demo.application.services.TokenLoginService"/>
 
-  <util:properties id="credentials" location="classpath:context.properties"/>
+  <util:properties id="credentials" location="classpath:application.properties"/>
 
 </beans>
