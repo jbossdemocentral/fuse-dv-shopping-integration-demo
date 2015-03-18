@@ -7,7 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>application</artifactId>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 
 	<dependencies>
 
@@ -24,16 +24,17 @@
 			<artifactId>applicationCommon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-	</dependencies>
 
-	<!-- Teiid Driver -->
-	<dependency>
-		<groupId>org.jboss.teiid</groupId>
-		<artifactId>teiid-client</artifactId>
-		<version>8.7.1.redhat-5</version>
-		<scope>system</scope>
-		<systemPath>${basedir}/lib/teiid-8.7.1.redhat-5-jdbc.jar</systemPath>
-	</dependency>
+		<!-- Teiid Driver -->
+		<dependency>
+			<groupId>org.jboss.teiid</groupId>
+			<artifactId>teiid-client</artifactId>
+			<version>8.7.1.redhat-5</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/teiid-8.7.1.redhat-5-jdbc.jar</systemPath>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -57,7 +58,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- to generate the MANIFEST-FILE of the bundle -->
+<!-- 			
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -72,7 +73,7 @@
 					</instructions>
 				</configuration>
 			</plugin>
-
+ -->
 			<!-- to run the example using mvn camel:run -->
 			<plugin>
 				<groupId>org.apache.camel</groupId>

@@ -1,43 +1,56 @@
 package com.redhat.shopping.demo.application.camel.rest;
 
+import org.apache.camel.CamelContext;
+import org.apache.camel.ProducerTemplate;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
-import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.impl.DefaultProducerTemplate;
+import org.apache.camel.test.spring.CamelSpringJUnit4ClassRunner;
+import org.apache.camel.test.spring.DisableJmx;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.context.ContextConfiguration;
 
-// to use camel-test-blueprint, then extend the CamelBlueprintTestSupport class,
-// and add your unit tests methods as shown below.
-public class TestRestRoute extends CamelBlueprintTestSupport {
+@RunWith(CamelSpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="classpath:camel-testRestContext.xml")
+@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+@DisableJmx(false)
+public class TestRestRoute {
 
 	private String[] operationNames = {"showProducts","buyProductsByCode","showPreviousTransactions"}; 
 	
+	@Autowired
+	private CamelContext camelRestContext;
 	
-	// here we have regular JUnit @Test method
+	private ProducerTemplate template;
+
+	@Before
+	public void init() throws Exception{
+		template= new DefaultProducerTemplate(camelRestContext);
+		template.start();
+	}
+	
+	@After
+	public void destroy() throws Exception{
+		template.stop();
+	}
+
+	
 	@Test
 	public void testRoute() throws Exception {
 		for (int index = 0; index < operationNames.length; index++) {
 			String operationName = operationNames[index];
-			
-			// set mock expectations
-	        getMockEndpoint("mock:"+operationName).expectedMessageCount(1);
-	        			
+		    MockEndpoint mockEndpoint = new MockEndpoint();
+			mockEndpoint.setEndpointUriIfNotSpecified("mock:"+operationName);
+			mockEndpoint.setExpectedMessageCount(1);
 			template.sendBodyAndHeader("direct:restTest", "Testing Rest Service", CxfConstants.OPERATION_NAME, operationName);
-			// assert mocks
-			assertMockEndpointsSatisfied();
+			MockEndpoint.assertIsSatisfied(camelRestContext);;
 		}
 
-	}
-
-	// override this method, and return the location of our Blueprint XML file
-	// to be used for testing
-	@Override
-	protected String getBlueprintDescriptor() {
-		return "classpath:camel-testRestService.xml";
-	}
-	
-	
-	@Override
-	public boolean isUseDebugger() {
-		// must enable debugger
-		return true;
 	}
 }

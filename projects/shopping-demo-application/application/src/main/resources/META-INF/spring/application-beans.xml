@@ -10,8 +10,7 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<context:property-placeholder
-	location="classpath:application.properties,
-            ${envfile}"
+	location="classpath:application.properties,file:${karaf.home}/etc/application.properties"
   ignore-unresolvable="true"/>
 
 	<import resource="classpath:spring/routes/*.xml"/>
