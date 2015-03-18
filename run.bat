@@ -23,7 +23,7 @@ del %DV_DIR%\standalone\deployments\shoppingApplication*.war*
 echo.
 echo Starting JBoss Data Virtualization
 echo.
-start call %DV_DIR%\bin\standalone  -Dkaraf.home="%SERVER_CONF_DV%"
+start call %DV_DIR%\bin\standalone  -Dkaraf.home=%SERVER_CONF_DV%
 
 
 :start
@@ -49,7 +49,7 @@ echo  - install application properties files...
 echo.
 
 mkdir %SERVER_CONF_DV%etc
-xcopy /Y /Q "%DV_SUPPORT_DIR%\application.properties" "%SERVER_CONF_DV%"
+xcopy /Y /Q "%DV_SUPPORT_DIR%\application.properties" "%SERVER_CONF_DV%etc"
 set ENVIRONMENT="eap"
 goto eapDeployment
 :fuse6_2
