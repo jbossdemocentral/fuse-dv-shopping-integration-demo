@@ -105,7 +105,6 @@ call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.%ENVIRONMENT%
 	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"features:install  camel-jackson"
 	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"features:install camel-salesforce"
 	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin"   "osgi:install -s wrap:file:%DV_DIR_OSGI%/dataVirtualization/jdbc/teiid-8.7.1.redhat-5-jdbc.jar"
-	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s mvn:com.redhat/applicationCommon"
 	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s mvn:com.redhat/application"
 )
 GOTO :EOF
