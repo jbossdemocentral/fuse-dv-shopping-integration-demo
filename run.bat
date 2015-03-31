@@ -59,7 +59,7 @@ set KARAF_LOG=%FUSE_DIR%\data\log\fuse.log
 	echo Starting JBoss Fuse and wait for 60 seconds
 	echo.
 	timeout 60 /nobreak
-	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s war:mvn:com.redhat/application-interface/1.0.0-SNAPSHOT/war?Web-ContextPath=shoppingApplication"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s war:mvn:com.redhat/application-interface/1.0.0-SNAPSHOT/war?Web-ContextPath=v1.shoppingApplication"
 )
 GOTO :EOF
 
