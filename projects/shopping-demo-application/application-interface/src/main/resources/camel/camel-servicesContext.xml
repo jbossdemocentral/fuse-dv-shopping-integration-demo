@@ -26,7 +26,7 @@
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<cxf:rsServer id="rsServer" address="/rest"
+	<cxf:rsServer id="rsServer" address="${restservice.url.server}"
 		serviceClass="com.redhat.shopping.demo.application.camel.rest.ShoppingHomeService" />
 	<cxf:cxfEndpoint id="productAddition" address="${webservices.url.server}"
 		serviceClass="com.redhat.shopping.demo.application.camel.ws.AddNewProducts"

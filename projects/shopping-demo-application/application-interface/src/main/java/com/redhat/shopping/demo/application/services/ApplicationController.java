@@ -31,7 +31,7 @@ public class ApplicationController {
 	
 	@Value(value="${gauth.callback.url}")
 	private String callBackUrl;
-
+	
 	@Autowired
 	private TokenLoginService service;
 
@@ -158,7 +158,7 @@ public class ApplicationController {
 	}
 
 	private String getBaseUrl(HttpServletRequest request) {
-		String baseUrl = String.format("%s://%s:%d",request.getScheme(),  request.getServerName(), request.getServerPort());
+		String baseUrl = String.format("%s://%s:%d%s",request.getScheme(),  request.getServerName(), request.getServerPort(),request.getContextPath());
 		return baseUrl;
 	}
 

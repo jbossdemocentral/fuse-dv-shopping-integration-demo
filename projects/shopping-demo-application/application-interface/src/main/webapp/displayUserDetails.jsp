@@ -2,6 +2,6 @@
 <% 
 User userDetails = (User)session.getAttribute("userDetails");
 if(userDetails!=null){%>
-<a href="/shoppingApplication/application/showTransactions" title="Previous Transactions">Welcome <%=userDetails.getUserName()%></a>
+<a href="<%= request.getContextPath()%>/application/showTransactions" title="Previous Transactions">Welcome <%=userDetails.getUserName()%></a>
 <%}%>
 

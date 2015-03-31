@@ -59,7 +59,7 @@ function addAllColumnHeaders(myList,id) {
 
 	function showProducts() {
 		var form = document.getElementById("formId");
-		form.setAttribute("action", "/shoppingApplication/application/show");
+		form.setAttribute("action", contextName+"/application/show");
 		form.setAttribute("method", "get");
 		form.submit();
 
@@ -71,7 +71,7 @@ function addAllColumnHeaders(myList,id) {
 			$('#userInput').html("");
 			$('#userInput')
 					.html(
-							"<form id='buyProductTemplate' method='get' action='/shoppingApplication/application/buy'><input type='text' name='productCode'/> "
+							"<form id='buyProductTemplate' method='get' action='"+contextName+"/application/buy'><input type='text' name='productCode'/> "
 									+ "<input type='submit' id='buyProducts' value='Buy' /></form>");
 		} else {
 			authenticateUser();
@@ -80,8 +80,8 @@ function addAllColumnHeaders(myList,id) {
 
 	function  authenticateUser() {
 		var form = document.getElementById("formId");
-		form.setAttribute("action", "/shoppingApplication/application/authenticate");
+		form.setAttribute("action", contextName+"/application/authenticate");
 		form.setAttribute("method", "get");
 		form.submit();
-		
+
 	}

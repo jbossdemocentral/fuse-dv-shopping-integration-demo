@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.redhat</groupId>
 		<artifactId>shopping-demo-application</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>v1</version>
 	</parent>
 	<artifactId>application-interface</artifactId>
 	<packaging>war</packaging>
@@ -298,7 +298,7 @@
 							</includes>
 						</resource>
 					</webResources>
-					<warName>shoppingApplication</warName>
+					<warName>${project.version}.shoppingApplication</warName>
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
@@ -336,7 +336,7 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.1.10</version>
 				<configuration>
-					<contextPath>/shoppingApplication</contextPath>
+					<contextPath>/${project.version}.shoppingApplication</contextPath>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">

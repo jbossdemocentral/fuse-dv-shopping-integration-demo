@@ -1,18 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*"%>
-
+<% String contextName = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/shoppingApplication/css/styles.css" type="text/css"/>	
-<script src='/shoppingApplication/js/jquery.min.js'></script>
-<script src='/shoppingApplication/js/application.js'></script>
+<script type="text/javascript">
+var contextName = '<%= contextName%>';
+</script>
+
+<link rel="stylesheet" href="<%= contextName%>/css/styles.css" type="text/css"/>	
+<script src='<%= contextName%>/js/jquery.min.js'></script>
+<script src='<%= contextName%>/js/shopping.js'></script>
 <title>Shopping Application</title>
 </head>
 <body>
 	<%@ include file="displayUserDetails.jsp"%>
-	<img src="/shoppingApplication/images/homeLogo.jpg" />
+	<img src="<%= contextName%>/images/homeLogo.jpg" />
 	<h2>Welcome to shopping application!</h2>
 	<h5>Choose an option</h5>
 	<form id="formId">
