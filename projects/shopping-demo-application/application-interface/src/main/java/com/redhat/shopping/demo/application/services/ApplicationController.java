@@ -28,6 +28,9 @@ import com.redhat.shopping.demo.application.beans.User;
 public class ApplicationController {
 	@Value(value="${restservice.url.client}")
 	private String restServiceUrl;
+	
+	@Value(value="${gauth.callback.url}")
+	private String callBackUrl;
 
 	@Autowired
 	private TokenLoginService service;
@@ -39,7 +42,7 @@ public class ApplicationController {
 		User userDetails = (User) request.getSession().getAttribute(
 				"userDetails");
 		String url = createBuyUrl(productCode, userDetails);
-		StringBuffer buyResult = fetchRestResponse(url);
+		StringBuffer buyResult = fetchRestResponse(getApplicationServiceUrl(request)+url);
 
 		model.addAttribute("buyResult", buyResult.toString());
 		return "/homePage.jsp";
@@ -68,6 +71,8 @@ public class ApplicationController {
 	public String handleAuthenticate(HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) throws Exception {
 		model.put("message", "No OAuth access token available");
+		model.put("callBackUrl", URLEncoder
+								.encode(getBaseUrl(request)+callBackUrl,"UTF-8"));
 		return "/authorize.jsp";
 	}
 
@@ -77,7 +82,7 @@ public class ApplicationController {
 			throws Exception {
 		User userDetails = (User) request.getSession().getAttribute(
 				"userDetails");
-		StringBuffer lastTransactions = fetchRestResponse("showTransactions"
+		StringBuffer lastTransactions = fetchRestResponse(getApplicationServiceUrl(request)+"showTransactions"
 				+ "?customerDetails="
 				+ URLEncoder.encode(userDetails.getEmailId(), "UTF-8"));
 		model.addAttribute("lastTransactions", lastTransactions.toString());
@@ -93,6 +98,8 @@ public class ApplicationController {
 					getAccessTokenSecret(request));
 		} catch (AuthenticationException e) {
 			model.put("message", "OAuth access token invalid");
+			model.put("callBackUrl", URLEncoder
+					.encode(getBaseUrl(request)+callBackUrl,"UTF-8"));
 			return "/authorize.jsp";
 		}
 		request.getSession().setAttribute("userDetails", userDetails);
@@ -100,9 +107,9 @@ public class ApplicationController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = { "show" })
-	public String handleShow(ModelMap model) throws Exception {
-
-		StringBuffer showProducts = fetchRestResponse("products/");
+	public String handleShow(HttpServletRequest request,ModelMap model) throws Exception {
+		String url = getApplicationServiceUrl(request).concat("products/");
+		StringBuffer showProducts = fetchRestResponse(url);
 		model.addAttribute("showProducts", showProducts.toString());
 		return "/homePage.jsp";
 	}
@@ -110,11 +117,12 @@ public class ApplicationController {
 	private  StringBuffer fetchRestResponse(String url)
 			throws IOException, ClientProtocolException {
 		HttpClient client = new DefaultHttpClient();
-		HttpGet request = new HttpGet(restServiceUrl + url);
+		HttpGet request = new HttpGet(url);
 		HttpResponse response = client.execute(request);
-		StringBuffer buyResult = new StringBuffer(IOUtils.toString(response
+		StringBuffer responseString = new StringBuffer(IOUtils.toString(response
 				.getEntity().getContent()));
-		return buyResult;
+		
+		return responseString;
 	}
 
 	private static String getAccessToken(HttpServletRequest request) {
@@ -143,6 +151,23 @@ public class ApplicationController {
 
 	public void setRestServiceUrl(String restServiceUrl) {
 		this.restServiceUrl = restServiceUrl;
+	}
+
+	public String getApplicationServiceUrl(HttpServletRequest request){
+		return getBaseUrl(request).concat(getRestServiceUrl());
+	}
+
+	private String getBaseUrl(HttpServletRequest request) {
+		String baseUrl = String.format("%s://%s:%d",request.getScheme(),  request.getServerName(), request.getServerPort());
+		return baseUrl;
+	}
+
+	public String getCallBackUrl() {
+		return callBackUrl;
+	}
+
+	public void setCallBackUrl(String callBackUrl) {
+		this.callBackUrl = callBackUrl;
 	}
 
 }

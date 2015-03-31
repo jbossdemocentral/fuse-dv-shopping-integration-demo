@@ -23,9 +23,9 @@ public class AddProductRoute extends RouteBuilder {
 			public void process(Exchange exchange) throws Exception {
 				String urlPath = (String)exchange.getIn().getBody(List.class).get(0);
 				if(urlPath!=null){
-					exchange.getIn().setBody(new File(new URI(urlPath)));
+					exchange.getOut().setBody(new File(new URI(urlPath)));
 				}else{
-					exchange.getIn().setBody("File Path Is Null");
+					exchange.getOut().setBody("File Path Is Null");
 				}
 				
 				
@@ -33,7 +33,7 @@ public class AddProductRoute extends RouteBuilder {
 		})
 		.split().xpath("/products-list/products").parallelProcessing()
 		.log("${body}")
-		.to("activemq:queue:insertProductsFromQueue")
+		  .to("activemq:queue:insertProductsFromQueue")
 		;
 		
 		

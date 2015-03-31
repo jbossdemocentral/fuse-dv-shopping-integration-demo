@@ -1,6 +1,10 @@
 /target
 
 
+activemq-data/
+
+test-output/
+
 *.pydevproject
 .metadata
 .gradle

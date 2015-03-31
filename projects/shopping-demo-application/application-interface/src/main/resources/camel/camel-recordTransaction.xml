@@ -7,7 +7,7 @@
 
 	<camelContext trace="false" id="recordTransactionContext" xmlns="http://camel.apache.org/schema/spring">
     <propertyPlaceholder location="classpath:sql.properties" id="properties"/>
-    <route customId="true" id="recordTransactionRoute">
+    <route id="recordTransactionRoute">
         <from uri="vm:recordTransaction"/>
         <to uri="sql:{{sql.transaction.history.transactionId}}"/>
         <process ref="recordTransactionProcessor"/>

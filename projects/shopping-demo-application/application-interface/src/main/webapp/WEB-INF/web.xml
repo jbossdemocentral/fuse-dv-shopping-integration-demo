@@ -5,7 +5,13 @@
 <web-app>
 
 	<display-name>Application User Interface Module</display-name>
-
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:camel/*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	<servlet>
 		<servlet-name>CamelServlet</servlet-name>
 		<servlet-class>org.apache.camel.component.servlet.CamelHttpTransportServlet</servlet-class>
@@ -20,6 +26,18 @@
 		</init-param>
 	</servlet>
 
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Servlet Mappings -->
+
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>application</servlet-name>
 		<url-pattern>/application/*</url-pattern>
@@ -29,7 +47,9 @@
 		<url-pattern>/camel/*</url-pattern>
 	</servlet-mapping>
 
+
 	<welcome-file-list>
 		<welcome-file>homePage.jsp</welcome-file>
 	</welcome-file-list>
+
 </web-app>

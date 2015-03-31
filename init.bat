@@ -1,6 +1,6 @@
 @ECHO OFF
 setlocal
-
+REM Please ensure to edit the fuse version names
 set PROJECT_HOME=%~dp0
 set DEMO=Fuse API Best Practices:Shopping Application Demo
 set AUTHORS=Accenture-Ankit Verma
