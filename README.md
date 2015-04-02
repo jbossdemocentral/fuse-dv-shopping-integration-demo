@@ -1,8 +1,6 @@
 Shopping Application Demo
 ======================================
 
-NOTE: This demo is currently being tested with a target final version 1 for March 30.
-
 This demo project will get you started with automatically installing two server instances, one with JBoss Data Virtualization and the other with JBoss Fuse, and then configuring the application.
 
 
