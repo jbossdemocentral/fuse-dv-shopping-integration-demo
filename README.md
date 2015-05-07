@@ -1,8 +1,6 @@
 Shopping Application Demo
 ======================================
 
-Note: A committee is reviewing the Reference Architecture and updates should be done by April 13 for the first release.
-
 This demo project will get you started with automatically installing two server instances, one with JBoss Data Virtualization and the other with JBoss Fuse, and then configuring the application.
 
 
