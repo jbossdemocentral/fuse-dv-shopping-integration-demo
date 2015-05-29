@@ -15,6 +15,7 @@ set DV_DIR_OSGI=%DV_DIR:\=/%
 set SUPPORT_DIR=%PROJECT_HOME%support
 set DV_SUPPORT_DIR=%SUPPORT_DIR%\dv-support
 set FUSE_SUPPORT_DIR=%SUPPORT_DIR%\fuse-support
+set API_VERSION=v1
 
 
 
@@ -40,6 +41,7 @@ goto start
 
 
 :eap
+call mvn versions:set -DnewVersion=%API_VERSION%
 call mvn clean install -DskipTests
 goto eapDeployment
 
@@ -59,7 +61,7 @@ set KARAF_LOG=%FUSE_DIR%\data\log\fuse.log
 	echo Starting JBoss Fuse and wait for 60 seconds
 	echo.
 	timeout 60 /nobreak
-	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s war:mvn:com.redhat/application-interface/1.0.0-SNAPSHOT/war?Web-ContextPath=v1.shoppingApplication"
+	call "%FUSE_DIR%\bin\client.bat" "-h" "127.0.0.1" "-r" "10" "-u" "admin" "-p" "admin" 	"osgi:install -s war:mvn:com.redhat/application-interface/1.0.0-SNAPSHOT/war?Web-ContextPath=%API_VERSION%.shoppingApplication"
 )
 GOTO :EOF
 
