@@ -41,13 +41,13 @@ goto start
 
 
 :eap
-call mvn versions:set -DnewVersion=%API_VERSION%
-call mvn clean install -DskipTests
+call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" versions:set -DnewVersion=%API_VERSION%
+call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" clean install -DskipTests
 goto eapDeployment
 
 :fuse6_2
 set FUSE_DIR=%PROJECT_HOME%target\fuse\jboss-fuse-6.1.1.redhat-412
-call mvn clean install -DskipTests
+call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" clean install -DskipTests
 goto fuseDeployment
 
 
@@ -67,5 +67,5 @@ GOTO :EOF
 
 :eapDeployment
 (
-	xcopy /Y /Q "%PROJECT_HOME%\projects\shopping-demo-application\application-interface\target\shoppingApplication.war" "%DV_DIR%\standalone\deployments"
+	xcopy /Y /Q "%PROJECT_HOME%\projects\shopping-demo-application\application-interface\target\*shoppingApplication.war" "%DV_DIR%\standalone\deployments"
 )

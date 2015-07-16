@@ -124,7 +124,7 @@
 		<dependency>
 			<groupId>org.jboss.teiid</groupId>
 			<artifactId>teiid-client</artifactId>
-			<version>8.7.1.redhat-8</version>
+			<version>8.7.1.redhat-5</version>
 		</dependency>
 
 		<dependency>

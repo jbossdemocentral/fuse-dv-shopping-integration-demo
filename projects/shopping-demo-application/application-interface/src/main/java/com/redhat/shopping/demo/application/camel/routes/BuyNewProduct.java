@@ -1,5 +1,11 @@
 package com.redhat.shopping.demo.application.camel.routes;
 
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.ValidationException;
 import org.apache.camel.builder.RouteBuilder;
 
@@ -8,7 +14,13 @@ public class BuyNewProduct extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		onException(ValidationException.class).handled(true)
-		.transform().simple("The user details are missing in the request. Please clear your cookies and try again");
+		.process(new Processor() {
+			public void process(Exchange exchange) throws Exception {
+				Response response = Response.serverError().status(Status.FORBIDDEN).entity("The user Details are missing").build();
+				throw new WebApplicationException(response);
+			}
+		});
+		
 		from("vm:buyProductsByCode")
 		.log("Buy Request Started")
 		.log("${body}")
