@@ -7,6 +7,10 @@ This demo project will get you started with automatically installing two server 
 Setting up your local environment
 ---------------------------------
 
+
+[Pull the project down from github][install-project]
+
+
 1. [Pull the project down from github][install-project]
 
 2. [Install MySQL][install-mysql]
@@ -32,8 +36,8 @@ Detailed Instructions for setting up your local environment
 ---------------------------------
 
 
-
-### [install-project]: Pull the project down from github
+[install-project]:
+### Pull the project down from github
 
 
 [Download and unzip.](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip).  If running on Windows, it is reccommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git.
