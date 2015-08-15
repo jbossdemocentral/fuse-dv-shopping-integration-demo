@@ -4,8 +4,42 @@ Shopping Application Demo
 This demo project will get you started with automatically installing two server instances, one with JBoss Data Virtualization and the other with JBoss Fuse, and then configuring the application.
 
 
-MySQL Setup
-------------
+Setting up your local environment
+---------------------------------
+
+1. [Pull the project down from github][install-project]
+
+2. [Install MySQL][install-mysql]
+
+3. [Install PostreSQL][install-postgres]
+
+4. [Install JBoss Data Virtualization][install-dv]. Note that this also installs EAP, so this is all you need to run the demos.
+
+5. [Install local development environment - JBoss Developer Studio][install-devstudio]
+
+6. [Install JBoss Fuse][install-fuse]. Only required if it is desired to run on Fuse.
+
+7. [Install SoapUI][install-soapui] to run the Web Service demo.
+
+8. [Set up and run application][install-setup]
+
+
+Running the demos
+---------------------------------
+
+
+Detailed Instructions for setting up your local environment
+---------------------------------
+
+
+
+### [install-project]: Pull the project down from github
+
+
+[Download and unzip.](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip).  If running on Windows, it is reccommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git.
+
+
+### [install-mysql]: MySQL Setup
 
 1. Install MySQL Database - http://dev.mysql.com/downloads/
 
@@ -15,16 +49,40 @@ MySQL Setup
 
 4. Open Workbench
 
-5. Open SQL Tab to execute the content of the following query
-   projects/shopping-demo-application/application/sql/init_mysql.sql
+5. Open SQL Tab to execute the content of the following query: [support/sql-support/init_mysql.sql](support/sql-support/init_mysql.sql)
 
-PostgresSQL Setup
-------------
+
+### [install-postgres]: PostgresSQL Setup
 
 1. Install the PostgreSQL server (http://www.postgresql.org/download/). 
 
-2. Open SQL Tab to execute the content of the following query
-   projects/shopping-demo-application/application/sql/init_mysql.sql
+2. Open SQL Tab to execute the content of the following query: [support/sql-support/init_postgres.sql](support/sql-support/init_postgres.sql)
+
+
+
+### [install-dv]: Install JBoss Data Virtualization.
+
+Note that this also installs EAP, so this is all you need to run the demos.
+
+1. Download
+
+2. Unzip...
+
+
+
+### [install-devstudio]: Install local development environment - JBoss Developer Studio
+
+
+
+
+### [install-fuse]: Install JBoss Fuse
+
+Only required if it is desired to run on Fuse.
+
+
+### [install-soapui]: Install SoapUI
+
+### [install-setup]: Setup and run the application
 
 
 Once the databases are created we can move to the installation and deployment section
