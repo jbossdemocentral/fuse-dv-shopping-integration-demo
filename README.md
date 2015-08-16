@@ -8,24 +8,21 @@ Setting up your local environment
 ---------------------------------
 
 
-[Pull the project down from github][install-project]
-
-
 1. [Pull the project down from github](#pull-the-project-down-from-github)
 
 2. [Install MySQL](#install-mysql)
 
-3. [Install PostreSQL][install-postgres]
+3. [Install PostreSQL](#Install-PostgreSQL)
 
-4. [Install JBoss Data Virtualization][install-dv]. Note that this also installs EAP, so this is all you need to run the demos.
+4. [Install JBoss Data Virtualization](#Install-JBoss-Data-Virtualization). Note that this also installs EAP, so this is all you need to run the demos.  
 
-5. [Install local development environment - JBoss Developer Studio][install-devstudio]
+5. [Install local development environment - JBoss Developer Studio](#Install-and-Setup-JBoss-Developer-Studio)
 
-6. [Install JBoss Fuse][install-fuse]. Only required if it is desired to run on Fuse.
+6. [Install JBoss Fuse](Install-JBoss-Fuse). Only required if it is desired to run on Fuse.
 
-7. [Install SoapUI][install-soapui] to run the Web Service demo.
+7. [Install SoapUI](#Install-SoapUI) to run the Web Service demo.
 
-8. [Set up and run application][install-setup]
+8. [Set up and run application](#Setup-and-run-the-application)
 
 
 Running the demos
@@ -41,6 +38,7 @@ Detailed Instructions for setting up your local environment
 
 [Download and unzip.](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip).  If running on Windows, it is reccommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git.
 
+[Back to top](#setting-up-your-local-environment)
 
 ### Install MySQL
 
@@ -55,7 +53,7 @@ Detailed Instructions for setting up your local environment
 5. Open SQL Tab to execute the content of the following query: [support/sql-support/init_mysql.sql](support/sql-support/init_mysql.sql)
 
 
-### [install-postgres]: PostgresSQL Setup
+### Install PostgreSQL
 
 1. Install the PostgreSQL server (http://www.postgresql.org/download/). 
 
@@ -63,29 +61,38 @@ Detailed Instructions for setting up your local environment
 
 
 
-### [install-dv]: Install JBoss Data Virtualization.
+### Install JBoss Data Virtualization
 
 Note that this also installs EAP, so this is all you need to run the demos.
 
-1. Download
+1. Go to http://access.redhat.com
 
-2. Unzip...
+2. Download JBoss Data Virtualization 6.1 (jboss-dv-installer-6.1.0.redhat-3.jar). Put this in the software folder in your local environment.
+
+3. Run this using:
+
+        java -jar jboss-dv-installer-6.1.0.redhat-3.jar
+
+4. Select the "target" folder (see [screenshot](/target/docs/img/dv-install-location.png)
+	* Select all products
+	* Choose passwords
+	* Perform the default configuration
+	* See [key options](/target/docs/img/dv-install-options.png)
+
+
+### Install and Setup JBoss Developer Studio
 
 
 
-### [install-devstudio]: Install local development environment - JBoss Developer Studio
 
-
-
-
-### [install-fuse]: Install JBoss Fuse
+### Install JBoss Fuse
 
 Only required if it is desired to run on Fuse.
 
 
-### [install-soapui]: Install SoapUI
+### Install SoapUI
 
-### [install-setup]: Setup and run the application
+### Setup and run the application
 
 
 Once the databases are created we can move to the installation and deployment section
