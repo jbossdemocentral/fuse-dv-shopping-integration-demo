@@ -13,7 +13,7 @@ Setting up your local environment
 
 1. [Pull the project down from github](#pull-the-project-down-from-github)
 
-2. [Install MySQL][install-mysql]
+2. [Install MySQL](#install-mysql)
 
 3. [Install PostreSQL][install-postgres]
 
@@ -42,7 +42,7 @@ Detailed Instructions for setting up your local environment
 [Download and unzip.](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip).  If running on Windows, it is reccommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git.
 
 
-### [install-mysql]: MySQL Setup
+### Install MySQL
 
 1. Install MySQL Database - http://dev.mysql.com/downloads/
 
