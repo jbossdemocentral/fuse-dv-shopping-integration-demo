@@ -11,7 +11,7 @@ Setting up your local environment
 [Pull the project down from github][install-project]
 
 
-1. [Pull the project down from github](# Pull the project down from github)
+1. [Pull the project down from github](#pull-the-project-down-from-github)
 
 2. [Install MySQL][install-mysql]
 
