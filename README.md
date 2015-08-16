@@ -28,9 +28,11 @@ Setting up your local environment
 Running the demos
 ---------------------------------
 
+1. [View the shopping application and show products](#view-the-shopping-application-and-show-products)
 
-Detailed Instructions for setting up your local environment
----------------------------------
+2. [Add products by calling a web service](#add-products-by-calling-a-web-service)
+
+3. [Authenticate](#authenticate)
 
 
 ### Pull the project down from github
@@ -38,7 +40,7 @@ Detailed Instructions for setting up your local environment
 
 [Download and unzip](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip) the archive file.  If running on Windows, it is reccommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git.
 
-[*Back to top*](#setting-up-your-local-environment)
+[*Back to setup*](#setting-up-your-local-environment)
 
 ### Install MySQL
 
@@ -52,13 +54,15 @@ Detailed Instructions for setting up your local environment
 
 5. Open SQL Tab to execute the content of the following query: [support/sql-support/init_mysql.sql](support/sql-support/init_mysql.sql)
 
-[*Back to top*](#setting-up-your-local-environment)
+[*Back to setup*](#setting-up-your-local-environment)
 
 ### Install PostgreSQL
 
 1. Install the PostgreSQL server (http://www.postgresql.org/download/). 
 
 2. Open SQL Tab to execute the content of the following query: [support/sql-support/init_postgres.sql](support/sql-support/init_postgres.sql)
+
+[*Back to setup*](#setting-up-your-local-environment)
 
 ### Install JBoss Data Virtualization
 
@@ -72,11 +76,13 @@ Note that this also installs EAP, so this is all you need to run the demos.
 
         java -jar jboss-dv-installer-6.1.0.redhat-3.jar
 
-4. Select the "target" folder (see [screenshot](/docs/img/dv-install-location.png))
+4. Select the "target" folder (see [screenshot](/docs/img/dv-install-location.png)) and complete the installation
 	* Select all products
 	* Choose passwords
 	* Perform the default configuration
 	* See [key options](/docs/img/dv-install-options.png)
+
+[*Back to setup*](#setting-up-your-local-environment)
 
 
 ### Install and Setup JBoss Developer Studio
@@ -91,17 +97,56 @@ Note that this also installs EAP, so this is all you need to run the demos.
 
 5. Import the project into eclipse as a Maven project.
 
+[*Back to setup*](#setting-up-your-local-environment)
+
 
 ### Install JBoss Fuse
 
 Only required if it is desired to run on Fuse.
 
+[*Back to setup*](#setting-up-your-local-environment)
+
 
 ### Install SoapUI
+
+Steps to install SoapUI TODO
+
+[*Back to setup*](#setting-up-your-local-environment)
 
 
 ### Setup and run the application
 
+Steps to setup (copy files, etc.) and start the application TODO
+
+[*Back to setup*](#setting-up-your-local-environment)
+
+
+
+### View the shopping application and show products
+
+1. Goto URL...
+
+2. The page should display
+
+3. Click show products. This calls ... and pulls back all the ...
+
+[*Back to running*](#running-the-demos)
+
+### Add products by calling a web service
+
+TODO
+
+[*Back to running*](#running-the-demos)
+
+### Authenticate
+
+TODO
+
+[*Back to running*](#running-the-demos)
+
+
+
+# THIS IS NO LONGER NEEDED
 
 Once the databases are created we can move to the installation and deployment section
 
