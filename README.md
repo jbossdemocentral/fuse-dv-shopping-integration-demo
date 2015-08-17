@@ -116,7 +116,24 @@ Steps to install SoapUI TODO
 
 ### Setup and run the application
 
-Steps to setup (copy files, etc.) and start the application TODO
+The init.sh/init.bat files will be updated to complete these steps. To complete manually:
+
+1. Install the teiid security files: copy support/dv-support/teiid-security-roles.properties AND teiid-security-users.properties to target/dv/standalone/configuration/
+
+2. Install mysql and postgres JDBC drivers into EAP: copy support/dv-support/modules/\* to target/dv/modules
+
+3. Install the configuration file for EAP: copy support/dv-support/standalone.dv.xml to target/dv/standalone/configuration/standalone.xml
+
+4. Install the demo virtual database: copy support/dv-support/vdb to target/dv/standalone/deployments
+
+5. Build the project: in the projects/shopping-demo-application run 
+        mvn clean install
+
+6. Install the WAR file into EAP: copy projects/shopping-demo-application/target/1.0.0-SNAPSHOT.shoppingApplication.war to target/dv/standalone/deployments/shoppingApplication.war
+
+7. Start the application server: run target/dv/bin/standalone.sh or standalone.bat
+
+
 
 [*Back to setup*](#setting-up-your-local-environment)
 
