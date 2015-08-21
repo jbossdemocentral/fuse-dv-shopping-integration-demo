@@ -3,7 +3,7 @@
   "summary":"This Shopping Cart Application demo project will get you started with automatically installing two server instances, one with JBoss Data Virtualization and the other with JBoss Fuse, and then configuring the application.",
   "author":"Accenture",
   "category":"dv",
-  "categories":["dv,fuse"],
+  "categories":["dv","fuse"],
   "level":"advanced",
   "published":true,
   "prerequisites":"Java VM 1.6 or 1.7, Maven",
