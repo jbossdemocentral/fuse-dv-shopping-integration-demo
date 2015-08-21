@@ -1,0 +1,19 @@
+{
+  "name":"Data Virtualization and Fuse API Best Practice",
+  "summary":"This Shopping Cart Application demo project will get you started with automatically installing two server instances, one with JBoss Data Virtualization and the other with JBoss Fuse, and then configuring the application.",
+  "author":"Kenneth Peeples",
+  "category":"dv",
+  "categories":["dv,fuse"],
+  "level":"advanced",
+  "published":true,
+  "prerequisites":"Java VM 1.6 or 1.7, Maven",
+  "targetProduct":"JBoss Data Virtualization, JBoss Fuse",
+  "productVersion":"JBoss DV 6.1, JBoss Fuse 6.1",
+  "technologies": ["Teiid","JBoss EAP","JBoss DV", "Camel","JBoss Fuse"],
+  "links": [ 
+    {
+      "name":"Code",
+      "url":"https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo"
+    }
+  ]
+}
