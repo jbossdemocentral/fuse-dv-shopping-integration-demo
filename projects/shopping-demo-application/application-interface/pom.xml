@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.redhat</groupId>
 		<artifactId>shopping-demo-application</artifactId>
-		<version>v1</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>application-interface</artifactId>
 	<packaging>war</packaging>
@@ -124,7 +124,7 @@
 		<dependency>
 			<groupId>org.jboss.teiid</groupId>
 			<artifactId>teiid-client</artifactId>
-			<version>8.7.1.redhat-5</version>
+			<version>8.7.1.redhat-8</version>
 		</dependency>
 
 		<dependency>
@@ -283,6 +283,15 @@
 		<finalName>application-interface</finalName>
 
 		<plugins>
+		<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+            </configuration>
+        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
