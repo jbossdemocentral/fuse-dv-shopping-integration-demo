@@ -1,26 +1,42 @@
 @ECHO OFF
 setlocal
-REM Please ensure to edit the fuse version names
+REM Please ensure to edit the software version names
+
+set FUSE_VERSION=full-6.2.0.redhat-133
+set DV_VERSION=6.1.0.Beta-redhat-1
+set AMQ-VERSION=6.2.0.redhat-133
+
+REM
+
+
 set PROJECT_HOME=%~dp0
 set DEMO=Fuse API Best Practices:Shopping Application Demo
 set AUTHORS=Accenture-Ankit Verma
 set PROJECT=https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo.git
 set PRODUCT=Fuse API Best Practices:Shopping Application Demo
+
 set JBOSS_HOME_DV=%PROJECT_HOME%target\dv
-set JBOSS_HOME_FUSE=%PROJECT_HOME%target\fuse\jboss-fuse-6.1.1.redhat-412
+set JBOSS_HOME_FUSE=%PROJECT_HOME%target\fuse\jboss-fuse-%FUSE_VERSION%
+set JBOSS_HOME_AMQ=%PROJECT_HOME%target\amq\jboss-a-mq-%AMQ_VERSION%
+
 set SERVER_BIN_DV=%JBOSS_HOME_DV%\bin\
 set SERVER_BIN_FUSE=%JBOSS_HOME_FUSE%\bin\
+
 set SERVER_CONF_DV=%JBOSS_HOME_DV%\standalone\configuration\
 set SERVER_CONF_FUSE=%JBOSS_HOME_FUSE%\etc\
+set SERVER_CONF_AMQ=%JBOSS_HOME_AMQ%\etc\
 set SRC_DIR=%PROJECT_HOME%software
+
 set SUPPORT_DIR=%PROJECT_HOME%support
 set DV_SUPPORT_DIR=%SUPPORT_DIR%\dv-support
 set FUSE_SUPPORT_DIR=%SUPPORT_DIR%\fuse-support
+set AMQ_SUPPORT_DIR=%SUPPORT_DIR%\amq-support
 set PRJ_DIR=%PROJECT_HOME%projects
-set FUSE=jboss-fuse-full-6.1.1.redhat-412.zip
-set DV=jboss-dv-installer-6.1.0.Beta-redhat-1.jar
-set FUSE_VERSION=6.1.1
-set DV_VERSION=6.0.0
+
+set FUSE=jboss-fuse-full-%FUSE_VERSION%.zip
+set DV=jboss-dv-installer-%DV_VERSION%.jar
+set AMQ=jboss-a-mq-AMQ-VERSION.zip
+
 
 REM wipe screen.
 cls
