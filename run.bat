@@ -46,7 +46,7 @@ call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" clean in
 goto eapDeployment
 
 :fuse6_2
-set FUSE_DIR=%PROJECT_HOME%target\fuse\jboss-fuse-6.1.1.redhat-412
+set FUSE_DIR=%PROJECT_HOME%target\fuse
 call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" clean install -DskipTests
 goto fuseDeployment
 
