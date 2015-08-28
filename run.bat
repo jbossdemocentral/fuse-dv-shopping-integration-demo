@@ -10,6 +10,7 @@ REM
 
 set PROJECT_HOME=%~dp0
 set DV_DIR=%PROJECT_HOME%target\dv
+set AMQ_DIR=%PROJECT_HOME%target\amq
 set SERVER_CONF_DV=%DV_DIR%\standalone\configuration\
 set DV_DIR_OSGI=%DV_DIR:\=/%
 set SUPPORT_DIR=%PROJECT_HOME%support
@@ -41,6 +42,7 @@ goto start
 
 
 :eap
+start call %AMQ_DIR%\bin\amq
 call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" versions:set -DnewVersion=%API_VERSION%
 call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" clean install -DskipTests
 goto eapDeployment
