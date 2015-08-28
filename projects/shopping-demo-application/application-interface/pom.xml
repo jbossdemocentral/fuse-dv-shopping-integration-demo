@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.redhat</groupId>
 		<artifactId>shopping-demo-application</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>v1</version>
 	</parent>
 	<artifactId>application-interface</artifactId>
 	<packaging>war</packaging>

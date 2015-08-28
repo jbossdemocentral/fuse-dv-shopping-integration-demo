@@ -336,7 +336,30 @@
 				security-realm="ApplicationRealm" />
 		</subsystem>
 		<subsystem xmlns="urn:jboss:domain:resource-adapters:1.1">
-			<resource-adapter id="activemq-rar.rar">
+			<resource-adapters>
+				<resource-adapter id="file">
+					<module slot="main" id="org.jboss.teiid.resource-adapter.file" />
+				</resource-adapter>
+				<resource-adapter id="google">
+					<module slot="main" id="org.jboss.teiid.resource-adapter.google" />
+				</resource-adapter>
+				<resource-adapter id="infinispan">
+					<module slot="main" id="org.jboss.teiid.resource-adapter.infinispan" />
+				</resource-adapter>
+				<resource-adapter id="ldap">
+					<module slot="main" id="org.jboss.teiid.resource-adapter.ldap" />
+				</resource-adapter>
+				<resource-adapter id="salesforce">
+					<module slot="main" id="org.jboss.teiid.resource-adapter.salesforce" />
+				</resource-adapter>
+				<resource-adapter id="webservice">
+					<module slot="main" id="org.jboss.teiid.resource-adapter.webservice" />
+				</resource-adapter>
+				<resource-adapter id="mongodb">
+					<module slot="main" id="org.jboss.teiid.resource-adapter.mongodb" />
+				</resource-adapter>
+
+				<resource-adapter id="activemq-rar.rar">
 				<archive>
 					activemq-rar.rar
 				</archive>
@@ -368,46 +391,9 @@
 						</recovery>
 					</connection-definition>
 				</connection-definitions>
-				<admin-objects>
-					<admin-object class-name="org.apache.activemq.command.ActiveMQQueue"
-						jndi-name="java:/queue/HELLOWORLDMDBQueue" use-java-context="true"
-						pool-name="HELLOWORLDMDBQueue">
-						<config-property name="PhysicalName">
-							HELLOWORLDMDBQueue
-						</config-property>
-					</admin-object>
-					<admin-object class-name="org.apache.activemq.command.ActiveMQTopic"
-						jndi-name="java:/topic/HELLOWORLDMDBTopic" use-java-context="true"
-						pool-name="HELLOWORLDMDBTopic">
-						<config-property name="PhysicalName">
-							HELLOWORLDMDBTopic
-						</config-property>
-					</admin-object>
-				</admin-objects>
-			</resource-adapter>
-			<resource-adapters>
-				<resource-adapter id="file">
-					<module slot="main" id="org.jboss.teiid.resource-adapter.file" />
-				</resource-adapter>
-				<resource-adapter id="google">
-					<module slot="main" id="org.jboss.teiid.resource-adapter.google" />
-				</resource-adapter>
-				<resource-adapter id="infinispan">
-					<module slot="main" id="org.jboss.teiid.resource-adapter.infinispan" />
-				</resource-adapter>
-				<resource-adapter id="ldap">
-					<module slot="main" id="org.jboss.teiid.resource-adapter.ldap" />
-				</resource-adapter>
-				<resource-adapter id="salesforce">
-					<module slot="main" id="org.jboss.teiid.resource-adapter.salesforce" />
-				</resource-adapter>
-				<resource-adapter id="webservice">
-					<module slot="main" id="org.jboss.teiid.resource-adapter.webservice" />
-				</resource-adapter>
-				<resource-adapter id="mongodb">
-					<module slot="main" id="org.jboss.teiid.resource-adapter.mongodb" />
-				</resource-adapter>
-			</resource-adapters>
+			</resource-adapter>			
+
+</resource-adapters>
 		</subsystem>
 		<subsystem xmlns="urn:jboss:domain:sar:1.0" />
 		<subsystem xmlns="urn:jboss:domain:security:1.2">

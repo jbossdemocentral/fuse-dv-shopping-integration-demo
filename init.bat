@@ -4,7 +4,7 @@ REM Please ensure to edit the software version names
 
 set FUSE_VERSION=6.2.0.redhat-133
 set DV_VERSION=6.1.0.Beta-redhat-1
-set AMQ-VERSION=6.2.0.redhat-133
+set AMQ-VERSION=6.1.0.redhat-379
 
 REM
 
@@ -181,8 +181,8 @@ if exist "%SRC_DIR%\%AMQ%" (
 				
 				echo  - active mq deployment in progress...
 				echo.
-				cscript /nologo "%SUPPORT_DIR%\unzip.vbs" "%JBOSS_HOME_AMQ%\extras\apache-activemq-5.11.0.redhat-620133-bin.zip "%PROJECT_HOME%\target\"
-				xcopy /Y /Q %PROJECT_HOME%\target\apache-activemq-5.9.0.redhat-610379\lib\optional\apache-activemq-5.11.0.redhat-620133-bin.rar %JBOSS_HOME_DV%\standalone\deployments\activemq-rar.rar
+				cscript /nologo "%SUPPORT_DIR%\unzip.vbs" "%JBOSS_HOME_AMQ%\extras\apache-activemq-5.9.0.redhat-610379-bin.zip" "%PROJECT_HOME%\target\"
+				xcopy /Y /Q %PROJECT_HOME%\target\apache-activemq-5.9.0.redhat-610379\lib\optional\activemq-rar-5.9.0.redhat-610379.rar %JBOSS_HOME_DV%\standalone\deployments\activemq-rar.rar
 				echo.
 
 ) else (
@@ -220,8 +220,8 @@ REM AMQ Installation END
 
 
 REM Renaming the Server Names to Make them Generic
-if exist "%JBOSS_HOME_FUSE%"( ren %PROJECT_HOME%target\fuse)
-if exist "%JBOSS_HOME_AMQ%" ( ren %PROJECT_HOME%target\amq )
+rename %JBOSS_HOME_FUSE% fuse
+rename %JBOSS_HOME_AMQ%  amq
 
 
 
