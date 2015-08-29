@@ -12,7 +12,7 @@
         <unmarshal>
             <jaxb contextPath="com.redhat.shopping.demo.application.pojos.jpa" prettyPrint="true" partClass="com.redhat.shopping.demo.application.pojos.jpa.Products"/>
         </unmarshal>
-        <log message="${body}"/>
+        <log message="Adding product: ${body.productName}"/>
         <setHeader headerName="productCode">
             <simple>${body.productcode}</simple>
         </setHeader>
@@ -40,11 +40,13 @@
         <setHeader headerName="MSRP">
             <simple>214.3</simple>
         </setHeader>
+        <log message="Executing {{sql.Products.addProduct}}"/>
         <to uri="sql:{{sql.Products.addProduct}}"/>
         <multicast parallelProcessing="true">
             <to uri="vm:productAdditionTweet"/>
             <to uri="vm:salesforceUpdate"/>
         </multicast>
+        <log message="Adding product complete"/>
     </route>
     <route>
         <from uri="activemq:buyProductsByCode"/>

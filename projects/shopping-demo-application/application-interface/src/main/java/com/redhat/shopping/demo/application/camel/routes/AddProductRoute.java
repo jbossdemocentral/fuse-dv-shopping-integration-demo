@@ -9,8 +9,12 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.NoErrorHandlerBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
+import org.apache.log4j.Logger;
 
 public class AddProductRoute extends RouteBuilder {
+	
+	private static final Logger LOGGER = Logger.getLogger(AddProductRoute.class);
+	
 	public void configure() {
 		errorHandler(new NoErrorHandlerBuilder());
 		JaxbDataFormat dataFormat = new JaxbDataFormat("com.redhat.shopping.demo.application.pojos.jpa");
@@ -21,6 +25,7 @@ public class AddProductRoute extends RouteBuilder {
 		.process(new Processor() {
 			
 			public void process(Exchange exchange) throws Exception {
+				LOGGER.info("Enter process()");
 				String urlPath = (String)exchange.getIn().getBody(List.class).get(0);
 				if(urlPath!=null){
 					exchange.getOut().setBody(new File(new URI(urlPath)));
@@ -28,7 +33,7 @@ public class AddProductRoute extends RouteBuilder {
 					exchange.getOut().setBody("File Path Is Null");
 				}
 				
-				
+				LOGGER.info("Exit process()");
 			}
 		})
 		.split().xpath("/products-list/products").parallelProcessing()

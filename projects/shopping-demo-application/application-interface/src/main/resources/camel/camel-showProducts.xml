@@ -15,7 +15,7 @@
 				afterFinallyUri="bean:logProductFetchTime?method=logQueryTimeFinally">
 				<to uri="sql:{{sql.Products.findAll}}" />
 			</aop>
-			<log message="found in DB ${body}" />
+			<log message="Completed product lookup" />
 			<marshal>
 				<json library="Jackson" />
 			</marshal>

@@ -14,7 +14,8 @@ public class GauthRouteBuilder extends RouteBuilder {
     public void configure() throws Exception {
     	getContext().setTracing(true);
 		String encodedScope = URLEncoder.encode(
-				"https://accounts.google.com/o/oauth2/auth", "UTF-8");
+//				"https://accounts.google.com/o/oauth2/auth", "UTF-8");
+				"https://www.googleapis.com/admin/directory/v1/users", "UTF-8");
         from("ghttp:///authorize")
         	.recipientList(simple("gauth:authorize?callback="+"${header.callBackUrl}"+"&scope="+encodedScope));
         from("ghttp:///handler")

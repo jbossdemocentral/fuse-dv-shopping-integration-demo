@@ -14,15 +14,17 @@ Setting up your local environment
 
 3. [Install PostreSQL](#install-postgresql)
 
-4. [Install JBoss Data Virtualization](#install-jboss-data-virtualization). Note that this also installs EAP, so this is all you need to run the demos.  
+4. [Install JBoss Data Virtualization](#install-jboss-data-virtualization). Note that this also installs EAP, which is what you need to run the demos.  
 
-5. [Install local development environment - JBoss Developer Studio](#install-and-setup-jboss-developer-studio)
+5. [Install JBoss A-MQ](#install-jboss-amq). 
 
-6. [Install JBoss Fuse](install-jboss-fuse). Only required if it is desired to run on Fuse.
+6. [Install local development environment - JBoss Developer Studio](#install-and-setup-jboss-developer-studio)
 
-7. [Install SoapUI](#install-soapui) to run the Web Service demo.
+7. [Install JBoss Fuse](install-jboss-fuse). Only required if it is desired to run on Fuse.
 
-8. [Set up and run application](#setup-and-run-the-application)
+8. [Install SoapUI](#install-soapui) to run the Web Service demo.
+
+9. [Set up and run application](#setup-and-run-the-application)
 
 
 Running the demos
@@ -84,7 +86,21 @@ Note that this also installs EAP, so this is all you need to run the demos.
 
 [*Back to setup*](#setting-up-your-local-environment)
 
+### Install JBoss AMQ
 
+1. Go to http://access.redhat.com
+
+2. Download Red Hat JBoss A-MQ 6.2.0 (jboss-a-mq-6.2.0.redhat-133.zip). Put this in the software folder in your local environment.
+
+3. Unzip this to the target folder.
+
+4. Unzip target/jboss-a-mq-6.2.0.redhat-133/extras/apache-activemq-5.11.0.redhat-620133-bin.zip to /support
+
+5. Copy /support/apache-activemq-5.11.0.redhat-620133/lib/optional/activemq-rar-5.11.0.redhat-620133.rar to /target/dv/standalone/deployments
+
+
+
+[*Back to setup*](#setting-up-your-local-environment)
 ### Install and Setup JBoss Developer Studio
 
 1. Go to http://access.redhat.com
@@ -109,7 +125,7 @@ Only required if it is desired to run on Fuse.
 
 ### Install SoapUI
 
-Steps to install SoapUI TODO
+Go to http://www.soapui.org/. Download and follow the instructions to install.
 
 [*Back to setup*](#setting-up-your-local-environment)
 
@@ -122,7 +138,9 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 
 2. Install mysql and postgres JDBC drivers into EAP: copy support/dv-support/modules/\* to target/dv/modules
 
-3. Install the configuration file for EAP: copy support/dv-support/standalone.dv.xml to target/dv/standalone/configuration/standalone.xml
+3. Install the users for A-MQ: copy support/users.properties to jboss-a-mq-6.2.0.redhat-133/etc/
+
+4. Install the configuration file for EAP: copy support/amqsupport/standalone.dv.xml to target/dv/standalone/configuration/standalone.xml
 
 4. Install the demo virtual database: copy support/dv-support/vdb to target/dv/standalone/deployments
 
@@ -133,6 +151,8 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 
 7. Start the application server: run target/dv/bin/standalone.sh or standalone.bat
 
+8. Start the AMQ server: run target/jboss-a-mq-6.2.0.redhat-133/standalone.sh or standalone.bat
+
 
 
 [*Back to setup*](#setting-up-your-local-environment)
@@ -141,46 +161,36 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 
 ### View the shopping application and show products
 
-1. Goto URL...
+1. Goto http://localhost:8080/shoppingApplication/
 
 2. The page should display
 
-3. Click show products. This calls ... and pulls back all the ...
+3. Click show products. This calls the camel show products route which pulls back all the products from the database and displays them.
 
 [*Back to running*](#running-the-demos)
 
 ### Add products by calling a web service
 
-TODO
+1. Open up SoapUI
+
+2. Create new project and add the wsdl by pointing it to http://localhost:8080/shoppingApplication/AddNewProductsService?wsdl.
+
+3. Create a sample request
+
+4. Paste in the path to the demo products file as a URL:
+	<arg0>file:///C:/fuse-dv-shopping-integration-demo/projects/shopping-demo-application/application-interface/data/addProducts.xml</arg0>
+
+5. Run the request
+
+6. You should then be able to click show products within the application and see new products added.
+
 
 [*Back to running*](#running-the-demos)
 
 ### Authenticate
 
-TODO
+TODO - Note that this may no longer work since Google turned off OAUTH 1 support as of April 2015.
 
 [*Back to running*](#running-the-demos)
 
 
-
-# THIS IS NO LONGER NEEDED
-
-Once the databases are created we can move to the installation and deployment section
-
-Configure the PROJECT.HOME/support/standalone.dv.xml file 
-----------------------------------------------------------
-
-The standalone.dv.xml holds the configuration of the datasources mapping to the JDV server. We have provided "postgres" as default username and password and for Postgres datasource and root as username and password for mysql. The user can change these values in standalone.dv xml found under /fuse-shoppng-aplication/support/dv-support.
-
-Installing Jboss and Deploying the Application  
-----------------------------------------------    
-
-1. [Download and unzip.](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip).  If running on Windows, it is reccommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  
-  
-2. Add the DV and Fuse Products to the software directory.  
-  
-3. Run 'init.sh' or 'init.bat' to setup the environment locally. 'init.bat' must be run with Administrative privileges.  
-  
-4. Run 'run.sh' or 'run.bat' to start the servers, create the container and deploy the bundles.  
-  
-5. Sign onto the Fuse Management console and check the console log to see the output from the routes for the use cases.  You can also view the Camel Diagrams.

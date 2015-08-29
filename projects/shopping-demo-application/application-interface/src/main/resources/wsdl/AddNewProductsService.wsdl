@@ -35,7 +35,7 @@
   </wsdl:binding>
   <wsdl:service name="AddNewProductsService">
     <wsdl:port name="AddNewProductsPort" binding="tns:AddNewProductsServiceSoapBinding">
-      <soap:address location="http://localhost:9090/AddNewProductsPort"/>
+      <soap:address location="http://localhost:8080/AddNewProductsPort"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
