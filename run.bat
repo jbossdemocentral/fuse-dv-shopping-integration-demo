@@ -10,6 +10,7 @@ REM
 
 set PROJECT_HOME=%~dp0
 set DV_DIR=%PROJECT_HOME%target\dv
+set AMQ_DIR=%PROJECT_HOME%target\amq
 set SERVER_CONF_DV=%DV_DIR%\standalone\configuration\
 set DV_DIR_OSGI=%DV_DIR:\=/%
 set SUPPORT_DIR=%PROJECT_HOME%support
@@ -20,12 +21,6 @@ set API_VERSION=v1
 
 
 del %DV_DIR%\standalone\deployments\shoppingApplication*.war*
-
-echo.
-echo Starting JBoss Data Virtualization
-echo.
-start call %DV_DIR%\bin\standalone  -Dkaraf.home=%SERVER_CONF_DV%
-
 
 :start
 echo Choose the environment you wish to deploy the application...
@@ -41,13 +36,26 @@ goto start
 
 
 :eap
+start call %AMQ_DIR%\bin\amq
 call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" versions:set -DnewVersion=%API_VERSION%
 call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" clean install -DskipTests
+
+echo.
+echo Starting JBoss Data Virtualization
+echo.
+start call %DV_DIR%\bin\standalone  -Dkaraf.home=%SERVER_CONF_DV%
+
 goto eapDeployment
 
 :fuse6_2
+
 set FUSE_DIR=%PROJECT_HOME%target\fuse
 call mvn -f "%PROJECT_HOME%\projects\shopping-demo-application\pom.xml" clean install -DskipTests
+echo.
+echo Starting JBoss Data Virtualization
+echo.
+start call %DV_DIR%\bin\standalone  -Dkaraf.home=%SERVER_CONF_DV%
+
 goto fuseDeployment
 
 
