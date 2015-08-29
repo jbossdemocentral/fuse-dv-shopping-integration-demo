@@ -360,19 +360,11 @@
 				</resource-adapter>
 
 				<resource-adapter id="activemq-rar.rar">
-				<archive>
-					activemq-rar.rar
-				</archive>
+				<archive>activemq-rar.rar</archive>
 				<transaction-support>XATransaction</transaction-support>
-				<config-property name="UserName">
-					admin
-				</config-property>
-				<config-property name="Password">
-					admin
-				</config-property>
-				<config-property name="ServerUrl">
-					tcp://localhost:61616?jms.rmIdFromConnectionId=true
-				</config-property>
+				<config-property name="UserName">admin</config-property>
+				<config-property name="Password">admin</config-property>
+				<config-property name="ServerUrl">tcp://localhost:61616?jms.rmIdFromConnectionId=true</config-property>
 				<connection-definitions>
 					<connection-definition
 						class-name="org.apache.activemq.ra.ActiveMQManagedConnectionFactory"
