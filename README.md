@@ -184,6 +184,8 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 
 6. You should then be able to click show products within the application and see new products added.
 
+7. You can also see the status of the queues that process these requests in the console window for A-MQ. Use the command "activemq:dstat".
+
 
 [*Back to running*](#running-the-demos)
 

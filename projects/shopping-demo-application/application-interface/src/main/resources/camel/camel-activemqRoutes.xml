@@ -10,7 +10,7 @@
     <route id="activeMqHandler">
         <from uri="activemq:insertProductsFromQueue"/>
         <log message="Inside Queue Addition Of Product"/>
-	<unmarshal>
+        <unmarshal>
             <jaxb contextPath="com.redhat.shopping.demo.application.pojos.jpa" prettyPrint="true" partClass="com.redhat.shopping.demo.application.pojos.jpa.Products"/>
         </unmarshal>
         <log message="Adding product: ${body.productName}"/>

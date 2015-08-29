@@ -7,7 +7,7 @@
 	<groupId>com.redhat</groupId>
 	<artifactId>shopping-demo-application</artifactId>
 	<version>v1</version>
-	<name>Shopping Apllication Demo Main</name>
+	<name>Shopping Application Demo Main</name>
 	<packaging>pom</packaging>
 	<modules>
 		<module>application-interface</module>

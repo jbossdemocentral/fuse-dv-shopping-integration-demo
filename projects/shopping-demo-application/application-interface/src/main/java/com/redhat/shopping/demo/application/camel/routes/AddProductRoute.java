@@ -16,6 +16,8 @@ public class AddProductRoute extends RouteBuilder {
 	private static final Logger LOGGER = Logger.getLogger(AddProductRoute.class);
 	
 	public void configure() {
+		
+		LOGGER.info("enter configure()");
 		errorHandler(new NoErrorHandlerBuilder());
 		JaxbDataFormat dataFormat = new JaxbDataFormat("com.redhat.shopping.demo.application.pojos.jpa");
 		dataFormat.setPartClass("com.redhat.shopping.demo.application.pojos.jpa.Products");
@@ -38,9 +40,10 @@ public class AddProductRoute extends RouteBuilder {
 		})
 		.split().xpath("/products-list/products").parallelProcessing()
 		.log("${body}")
-		  .to("activemq:queue:insertProductsFromQueue")
+		  .to("activemq:insertProductsFromQueue")
 		;
 		
-		
+		LOGGER.info("Configured routes:\n" + this.toString());
+		LOGGER.info("exit configure()");
 	}
 }
