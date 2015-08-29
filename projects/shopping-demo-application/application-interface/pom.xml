@@ -328,9 +328,6 @@
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdl>${basedir}/src/main/resources/wsdl/AddNewProductsService.wsdl</wsdl>
-									<extraargs>
-										<extraarg>-impl</extraarg>
-									</extraargs>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
