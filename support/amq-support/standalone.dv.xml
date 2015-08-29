@@ -365,10 +365,10 @@
 				</archive>
 				<transaction-support>XATransaction</transaction-support>
 				<config-property name="UserName">
-					defaultUser
+					admin
 				</config-property>
 				<config-property name="Password">
-					defaultPassword
+					admin
 				</config-property>
 				<config-property name="ServerUrl">
 					tcp://localhost:61616?jms.rmIdFromConnectionId=true
