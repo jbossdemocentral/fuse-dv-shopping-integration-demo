@@ -42,7 +42,7 @@ public class AddProductRoute extends RouteBuilder {
 		})
 		.split().xpath("/products-list/products").parallelProcessing()
 		.log("Adding  Products")
-		  //.to("activemq:insertProductsFromQueue")
+		  .to("activemq:insertProductsFromQueue")
 		  .process(new Processor() {
 			@Override
 			public void process(Exchange exchange) throws Exception {
