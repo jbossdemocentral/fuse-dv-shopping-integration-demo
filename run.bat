@@ -20,7 +20,7 @@ set API_VERSION=v1
 
 
 
-del %DV_DIR%\standalone\deployments\shoppingApplication*.war*
+del %DV_DIR%\standalone\deployments\*shoppingApplication*.war*
 
 :start
 echo Choose the environment you wish to deploy the application...
