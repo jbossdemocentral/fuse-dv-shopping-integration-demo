@@ -34,6 +34,10 @@ Running the demos
 
 2. [Add products by calling a web service](#add-products-by-calling-a-web-service)
 
+3. [See products added on twitter and salesforce](#see-products-added-on-twitter-and-salesforce)
+
+4. [View REST services](#view-rest-services)
+
 3. [Authenticate](#authenticate)
 
 
@@ -46,7 +50,7 @@ Running the demos
 
 ### Install MySQL
 
-1. Install MySQL Database - http://dev.mysql.com/downloads/
+1. Install MySQL Database - http://dev.mysql.com/downloads/. Keep the admin password as root.
 
 2. Install MySQL Workbench - http://dev.mysql.com/downloads/workbench/
 
@@ -60,7 +64,7 @@ Running the demos
 
 ### Install PostgreSQL
 
-1. Install the PostgreSQL server (http://www.postgresql.org/download/). 
+1. Install the PostgreSQL server (http://www.postgresql.org/download/). Keep the admin password as postgres.
 
 2. Open SQL Tab to execute the content of the following query: [support/sql-support/init_postgres.sql](support/sql-support/init_postgres.sql)
 
@@ -173,7 +177,9 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 
 1. Open up SoapUI
 
-2. Create new project and add the wsdl by pointing it to http://localhost:8080/shoppingApplication/AddNewProductsService?wsdl.
+2. Create new project and add the wsdl by pointing it to http://localhost:8080/shoppingApplication/services/shoppingApplication/AddNewProductsService?wsdl.
+Note that this is what sends the request through the Camel route. If you use the direct URL for the web service
+(http://localhost:8080/shoppingApplication/AddNewProductsService) then this will NOT go through Camel and will hit AddNewProductsImpl directly instead.
 
 3. Create a sample request
 
@@ -182,9 +188,38 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 
 5. Run the request
 
-6. You should then be able to click show products within the application and see new products added.
+6. You should then be able to click show products within the application and see new products added (just look for
+product names from the addProducts.xml). 
 
 7. You can also see the status of the queues that process these requests in the console window for A-MQ. Use the command "activemq:dstat".
+
+**NOTE:** Once you run this, it will fail on subsequent requests to add the same products. Just go to mysql and 
+clear out the DB to rerun.
+
+
+[*Back to running*](#running-the-demos)
+
+### See products added on twitter and salesforce
+
+1. You should start by running the (add products)[#add-products-by-calling-a-web-service].
+
+2. You can then go to the twitter - https://twitter.com/shoppingapp037 - to see the products that were just added.
+
+**NOTE:** this is a shared twitter account. You can update the create your own account and update the credentials in 
+shoppingApplication.properties.
+
+3. You can go to salesforce to see the products added as well. 
+
+**NOTE:** this is a shared salesforce demo account. You should update to create your own account and update the credentials in 
+shoppingApplication.properties.
+
+
+[*Back to running*](#running-the-demos)
+
+### View REST services
+
+1. You can see the restful services by hitting them directly with the rest URL - for example: http://localhost:8080/shoppingApplication/services/rest/shoppingApplication/products/
+is the URL for displaying all of the products using JSON.
 
 
 [*Back to running*](#running-the-demos)
