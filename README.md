@@ -205,13 +205,14 @@ clear out the DB to rerun.
 
 2. You can then go to the twitter - https://twitter.com/shoppingapp037 - to see the products that were just added.
 
-**NOTE:** this is a shared twitter account. You can update the create your own account and update the credentials in 
-shoppingApplication.properties.
+**NOTE:** this is a shared twitter account. You will get errors if you load the same products multiple times too quickly,
+or if another user has recently added the same products, as twitter rejects duplicate timeline posts.
+You can also create your own account and update the credentials in shoppingApplication.properties.
 
 3. You can go to salesforce to see the products added as well. 
 
-**NOTE:** this is a shared salesforce demo account. You should update to create your own account and update the credentials in 
-shoppingApplication.properties.
+**NOTE:** this is a shared salesforce demo account and may not work reliably as credentials expire.
+You should update to create your own account and update the credentials in shoppingApplication.properties.
 
 
 [*Back to running*](#running-the-demos)
