@@ -14,6 +14,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
@@ -26,6 +27,9 @@ import com.redhat.shopping.demo.application.beans.User;
 
 @RequestMapping("/")
 public class ApplicationController {
+	
+	private static final Logger LOGGER = Logger.getLogger(ApplicationController.class);
+	
 	@Value(value="${restservice.url.client}")
 	private String restServiceUrl;
 	
@@ -109,6 +113,7 @@ public class ApplicationController {
 	@RequestMapping(method = RequestMethod.GET, value = { "show" })
 	public String handleShow(HttpServletRequest request,ModelMap model) throws Exception {
 		String url = getApplicationServiceUrl(request).concat("products/");
+		LOGGER.info("URL for show: " + url);
 		StringBuffer showProducts = fetchRestResponse(url);
 		model.addAttribute("showProducts", showProducts.toString());
 		return "/homePage.jsp";

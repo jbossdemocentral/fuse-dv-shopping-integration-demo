@@ -6,10 +6,12 @@ import java.net.URI;
 import java.util.List;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.NoErrorHandlerBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
+import org.apache.camel.processor.interceptor.Tracer;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
@@ -20,6 +22,11 @@ public class AddProductRoute extends RouteBuilder {
 	public void configure() {
 		
 		LOGGER.info("enter configure()");
+		
+		Tracer tracer = new Tracer();
+		tracer.setLogLevel(LoggingLevel.INFO);
+	    getContext().addInterceptStrategy(tracer);
+		
 		errorHandler(new NoErrorHandlerBuilder());
 		JaxbDataFormat dataFormat = new JaxbDataFormat("com.redhat.shopping.demo.application.pojos.jpa");
 		dataFormat.setPartClass("com.redhat.shopping.demo.application.pojos.jpa.Products");
