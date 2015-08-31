@@ -38,7 +38,7 @@ Running the demos
 
 4. [View REST services](#view-rest-services)
 
-5. [Authenticate](#authenticate)
+5. [Authenticate and buy products](#authenticate-and-buy-products)
 
 6. [Consume API using a feedhenry project](#see-products-added-on-twitter-and-salesforce)
 
@@ -244,22 +244,25 @@ is the URL for displaying all of the products using JSON.
 
 [*Back to running*](#running-the-demos)
 
-### Authenticate
+### Authenticate and Buy Products
 
-TODO - Note that this may no longer work since Google turned off OAUTH 1 support as of April 2015.
+The demo for this is not currently working as Google has deprecated OAUTH v1 so this component no longer functions.
+The team is working on resolving this issue and releasing a new version. 
 
 [*Back to running*](#running-the-demos)
 
 ### Using Feedhenry to consume the API
 
-Feedhenry is a cloud based platform to create apps which can consume MW API's. We have created a demo app and it is hosted currently in cloud. One who has ssl access to the project can clone the demo. Please do view the document to see how we are consuming the API.
-Setting up Feedhenry Project-
-	Install nodejs and npm 
-	Install fhc command line tool using npm: npm install -g fh-fhc
-	Set the target domain to the feedhenry cloud server - fhc target
-	Login to the server - fhc login <username> <password>
-	Add the ssh key:fhc keys add <ssh_key>
-	Clone the demo fuse project: fhc project clone pem6elr2gpzcnivweemw6glc //Project id of demo
+Feedhenry is a cloud based platform to create apps which can consume MW API's. There is a demo app and hosted currently in the cloud. Details on using this are documented in the whitepaper. If you have access to the cloud, you can clone the project as follows:
+
+*Setting up Feedhenry Project*
+
+1. Install nodejs and npm 
+2. Install fhc command line tool using npm: npm install -g fh-fhc
+3. Set the target domain to the feedhenry cloud server - fhc target
+4. Login to the server - fhc login <username> <password>
+5. Add the ssh key:fhc keys add <ssh_key>
+6. Clone the demo fuse project: fhc project clone pem6elr2gpzcnivweemw6glc //Project id of demo
 
 [*Back to running*](#running-the-demos)
 
