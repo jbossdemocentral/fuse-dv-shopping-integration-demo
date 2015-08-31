@@ -218,7 +218,7 @@ You should update to create your own account and update the credentials in for b
 To create an account:
 Sign Up to : https://developer.salesforce.com/signup
 Copy the clienId and clientSecret and other details of your account and paste it in the shoppingAppplication.properties file.
-# SalesForce component properties to connect
+SalesForce component properties to connect
 	salesforce.clientId=<clientId>
 	salesforce.clientSecret=<secret>
 	salesforce.userName=<userName>
@@ -227,8 +227,6 @@ Copy the clienId and clientSecret and other details of your account and paste it
 
 [*Back to running*](#running-the-demos)
 
-
-[*Back to running*](#running-the-demos)
 
 ### View REST services
 
