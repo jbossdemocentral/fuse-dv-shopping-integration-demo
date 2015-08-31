@@ -216,13 +216,21 @@ You can also create your own account and update the credentials in shoppingAppli
 **NOTE:** this is a shared salesforce demo account and may not work reliably as credentials expire.
 You should update to create your own account and update the credentials in for better usage.
 To create an account:
+
 Sign Up to : https://developer.salesforce.com/signup
+
 Copy the clienId and clientSecret and other details of your account and paste it in the shoppingAppplication.properties file.
+
 SalesForce component properties to connect
+
 	salesforce.clientId=<clientId>
+	
 	salesforce.clientSecret=<secret>
+	
 	salesforce.userName=<userName>
+	
 	salesforce.password=<password>
+	
 
 
 [*Back to running*](#running-the-demos)
