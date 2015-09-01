@@ -251,11 +251,11 @@ The team is working on resolving this issue and releasing a new version.
 
 [*Back to running*](#running-the-demos)
 
-### Using Feedhenry to consume the API
+### Using Red Hat Mobile to consume the API
 
-Feedhenry is a cloud based platform to create apps which can consume MW API's. There is a demo app and hosted currently in the cloud. Details on using this are documented in the whitepaper. If you have access to the cloud, you can clone the project as follows:
+Red Hat Mobile is a cloud based platform to create apps which can consume MW API's. There is a demo app and hosted currently in the cloud. Details on using this are documented in the whitepaper. If you have access to the cloud, you can clone the project as follows:
 
-*Setting up Feedhenry Project*
+*Setting up Red Hat Mobile Project*
 
 1. Install nodejs and npm 
 2. Install fhc command line tool using npm: npm install -g fh-fhc
