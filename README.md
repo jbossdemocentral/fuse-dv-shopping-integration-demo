@@ -46,7 +46,8 @@ Running the demos
 ### Pull the project down from github
 
 
-[Download and unzip](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip) the archive file.  If running on Windows, it is reccommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git.
+[Download and unzip](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip) the archive file.  If running on Windows, it is recommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git with 
+	git clone https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo.git
 
 [*Back to setup*](#setting-up-your-local-environment)
 
