@@ -16,7 +16,8 @@ public class BuyNewProduct extends RouteBuilder {
 		onException(ValidationException.class).handled(true)
 		.process(new Processor() {
 			public void process(Exchange exchange) throws Exception {
-				Response response = Response.serverError().status(Status.FORBIDDEN).entity("The user Details are missing").build();
+				Response response = Response.serverError().status(Status.FORBIDDEN).entity(
+						"The user Details are missing").build();
 				throw new WebApplicationException(response);
 			}
 		});

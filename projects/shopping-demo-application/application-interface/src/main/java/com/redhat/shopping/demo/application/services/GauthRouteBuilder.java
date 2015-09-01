@@ -7,8 +7,7 @@ import org.apache.camel.builder.RouteBuilder;
  * Builds the OAuth-specific routes (implements the OAuth integration layer) of the demo application.
  */
 public class GauthRouteBuilder extends RouteBuilder {
-
-    
+   
 	
 	@Override
     public void configure() throws Exception {

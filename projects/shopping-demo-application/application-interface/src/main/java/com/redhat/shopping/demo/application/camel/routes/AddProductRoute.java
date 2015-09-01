@@ -53,7 +53,8 @@ public class AddProductRoute extends RouteBuilder {
 		  .process(new Processor() {
 			@Override
 			public void process(Exchange exchange) throws Exception {
-				exchange.getIn().setBody(new String(IOUtils.toByteArray(new FileInputStream(new File("data/addProductsResponse.txt")))));
+				exchange.getIn().setBody(new String(IOUtils.toByteArray(
+						new FileInputStream(new File("data/addProductsResponse.txt")))));
 			}
 		});
 		
@@ -61,3 +62,4 @@ public class AddProductRoute extends RouteBuilder {
 		LOGGER.info("exit configure()");
 	}
 }
+	

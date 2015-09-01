@@ -23,7 +23,8 @@ public class ShoppingHomeService {
 	@GET
 	@Path("/products/{productCode}/buy")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String buyProductsByCode(@PathParam("productCode") String productCode,@QueryParam("customerDetails") String customerDetails){
+	public String buyProductsByCode( @PathParam("productCode") String productCode,
+			                         @QueryParam("customerDetails") String customerDetails){
 		return null;
 	}
 	
