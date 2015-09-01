@@ -43,7 +43,7 @@ Running the demos
 6. [Consume API using a feedhenry project](#see-products-added-on-twitter-and-salesforce)
 
 
-### Pull the project down from github
+### Setup 1 - Pull the project down from github
 
 
 [Download and unzip](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip) the archive file.  If running on Windows, it is recommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git with 
@@ -51,7 +51,7 @@ Running the demos
 
 [*Back to setup*](#setting-up-your-local-environment)
 
-### Install MySQL
+### Setup 2 - Install MySQL
 
 1. Install MySQL Database - http://dev.mysql.com/downloads/. Keep the admin password as root.
 
@@ -65,7 +65,7 @@ Running the demos
 
 [*Back to setup*](#setting-up-your-local-environment)
 
-### Install PostgreSQL
+### Setup 3 - Install PostgreSQL
 
 1. Install the PostgreSQL server (http://www.postgresql.org/download/). Keep the admin password as postgres.
 
@@ -73,7 +73,7 @@ Running the demos
 
 [*Back to setup*](#setting-up-your-local-environment)
 
-### Install JBoss Data Virtualization
+### Setup 4 - Install JBoss Data Virtualization
 
 Note that this also installs EAP, so this is all you need to run the demos.
 
@@ -87,13 +87,13 @@ Note that this also installs EAP, so this is all you need to run the demos.
 
 4. Select the "target" folder (see [screenshot](/docs/img/dv-install-location.png)) and complete the installation
 	* Select all products
-	* Choose passwords
+	* Choose passwords and OData enabled
 	* Perform the default configuration
 	* See [key options](/docs/img/dv-install-options.png)
 
 [*Back to setup*](#setting-up-your-local-environment)
 
-### Install JBoss AMQ
+### Setup 5 - Install JBoss AMQ
 
 1. Go to http://access.redhat.com
 
@@ -107,8 +107,9 @@ Note that this also installs EAP, so this is all you need to run the demos.
 
 
 
-[*Back to setup*](#setting-up-your-local-environment)
-### Install and Setup JBoss Developer Studio
+[*Back to setup*](#setting-up-your-local-environment)  
+
+### Setup 6 - Install and Setup JBoss Developer Studio
 
 1. Go to http://access.redhat.com
 
@@ -123,21 +124,21 @@ Note that this also installs EAP, so this is all you need to run the demos.
 [*Back to setup*](#setting-up-your-local-environment)
 
 
-### Install JBoss Fuse
+### Setup 7 - Install JBoss Fuse
 
 Only required if it is desired to run on Fuse.
 
 [*Back to setup*](#setting-up-your-local-environment)
 
 
-### Install SoapUI
+### Setup 8 - Install SoapUI
 
 Go to http://www.soapui.org/. Download and follow the instructions to install.
 
 [*Back to setup*](#setting-up-your-local-environment)
 
 
-### Setup and run the application
+### Setup 9 - Setup and run the application
 
 The init.sh/init.bat files will be updated to complete these steps. To complete manually:
 
