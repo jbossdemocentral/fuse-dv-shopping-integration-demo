@@ -8,23 +8,23 @@ Setting up your local environment
 ---------------------------------
 
 
-1. [Pull the project down from github](#pull-the-project-down-from-github)
+1. [Pull the project down from github](#setup-1-pull-the-project-down-from-github)
 
-2. [Install MySQL](#install-mysql)
+2. [Install MySQL](#setup-2-install-mysql)
 
-3. [Install PostreSQL](#install-postgresql)
+3. [Install PostreSQL](#setup-3-install-postgresql)
 
-4. [Install JBoss Data Virtualization](#install-jboss-data-virtualization). Note that this also installs EAP, which is what you need to run the demos.  
+4. [Install JBoss Data Virtualization](#setup-4-install-jboss-data-virtualization). Note that this also installs EAP, which is what you need to run the demos.  
 
-5. [Install JBoss A-MQ](#install-jboss-amq). 
+5. [Install JBoss A-MQ](#setup-5-install-jboss-amq). 
 
-6. [Install local development environment - JBoss Developer Studio](#install-and-setup-jboss-developer-studio)
+6. [Install local development environment - JBoss Developer Studio](#setup-6-install-and-setup-jboss-developer-studio)
 
-7. [Install JBoss Fuse](install-jboss-fuse). Only required if it is desired to run on Fuse.
+7. [Install JBoss Fuse](#setup-7-install-jboss-fuse). Only required if it is desired to run on Fuse.
 
-8. [Install SoapUI](#install-soapui) to run the Web Service demo.
+8. [Install SoapUI](#setup-8-install-soapui) to run the Web Service demo.
 
-9. [Set up and run application](#setup-and-run-the-application)
+9. [Set up and run application](#setup-9-setup-and-run-the-application)
 
 
 Running the demos
@@ -43,7 +43,7 @@ Running the demos
 6. [Consume API using a feedhenry project](#see-products-added-on-twitter-and-salesforce)
 
 
-### Setup 1 - Pull the project down from github
+### Setup 1 Pull the project down from github
 
 
 [Download and unzip](https://github.com/jbossdemocentral/fuse-dv-shopping-integration-demo/archive/master.zip) the archive file.  If running on Windows, it is recommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.  Or just clone from git with 
@@ -51,7 +51,7 @@ Running the demos
 
 [*Back to setup*](#setting-up-your-local-environment)
 
-### Setup 2 - Install MySQL
+### Setup 2 Install MySQL
 
 1. Install MySQL Database - http://dev.mysql.com/downloads/. Keep the admin password as root.
 
@@ -65,7 +65,7 @@ Running the demos
 
 [*Back to setup*](#setting-up-your-local-environment)
 
-### Setup 3 - Install PostgreSQL
+### Setup 3 Install PostgreSQL
 
 1. Install the PostgreSQL server (http://www.postgresql.org/download/). Keep the admin password as postgres.
 
@@ -73,7 +73,7 @@ Running the demos
 
 [*Back to setup*](#setting-up-your-local-environment)
 
-### Setup 4 - Install JBoss Data Virtualization
+### Setup 4 Install JBoss Data Virtualization
 
 Note that this also installs EAP, so this is all you need to run the demos.
 
@@ -93,7 +93,7 @@ Note that this also installs EAP, so this is all you need to run the demos.
 
 [*Back to setup*](#setting-up-your-local-environment)
 
-### Setup 5 - Install JBoss AMQ
+### Setup 5 Install JBoss AMQ
 
 1. Go to http://access.redhat.com
 
@@ -109,7 +109,7 @@ Note that this also installs EAP, so this is all you need to run the demos.
 
 [*Back to setup*](#setting-up-your-local-environment)  
 
-### Setup 6 - Install and Setup JBoss Developer Studio
+### Setup 6 Install and Setup JBoss Developer Studio
 
 1. Go to http://access.redhat.com
 
@@ -124,21 +124,21 @@ Note that this also installs EAP, so this is all you need to run the demos.
 [*Back to setup*](#setting-up-your-local-environment)
 
 
-### Setup 7 - Install JBoss Fuse
+### Setup 7 Install JBoss Fuse
 
 Only required if it is desired to run on Fuse.
 
 [*Back to setup*](#setting-up-your-local-environment)
 
 
-### Setup 8 - Install SoapUI
+### Setup 8 Install SoapUI
 
 Go to http://www.soapui.org/. Download and follow the instructions to install.
 
 [*Back to setup*](#setting-up-your-local-environment)
 
 
-### Setup 9 - Setup and run the application
+### Setup 9 Setup and run the application
 
 The init.sh/init.bat files will be updated to complete these steps. To complete manually:
 
