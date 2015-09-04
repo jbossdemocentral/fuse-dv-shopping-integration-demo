@@ -155,11 +155,11 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 5. Build the project: in the projects/shopping-demo-application run 
         mvn clean install
 
-6. Install the WAR file into EAP: copy projects/shopping-demo-application/target/1.0.0-SNAPSHOT.shoppingApplication.war to target/dv/standalone/deployments/shoppingApplication.war
+6. Install the WAR file into EAP: copy projects/shopping-demo-application/application-interface/target/v1.shoppingApplication.war to target/dv/standalone/deployments/shoppingApplication.war
 
 7. Start the application server: run target/dv/bin/standalone.sh or standalone.bat
 
-8. Start the AMQ server: run target/jboss-a-mq-6.2.0.redhat-133/standalone.sh or standalone.bat
+8. Start the AMQ server: run target/jboss-a-mq-6.2.0.redhat-133/bin/standalone.sh or standalone.bat
 
 
 
