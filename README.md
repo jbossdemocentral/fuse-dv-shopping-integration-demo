@@ -81,11 +81,13 @@ Note that this also installs EAP, so this is all you need to run the demos.
 
 2. Download JBoss Data Virtualization 6.1 (jboss-dv-installer-6.1.0.redhat-3.jar). Put this in the software folder in your local environment.
 
-3. Run this using:
+3. Create the folder where this will be installed: mkdir target/dv
+
+4. Run the installer using:
 
         java -jar jboss-dv-installer-6.1.0.redhat-3.jar
 
-4. Select the "target" folder (see [screenshot](/docs/img/dv-install-location.png)) and complete the installation
+5. Select the "target/dv" folder (see [screenshot](/docs/img/dv-install-location.png)) and complete the installation
 	* Select all products
 	* Choose passwords and OData enabled
 	* Perform the default configuration
