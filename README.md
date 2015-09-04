@@ -148,7 +148,7 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 
 3. Install the users for A-MQ: copy support/amq-support/users.properties to jboss-a-mq-6.2.0.redhat-133/etc/
 
-4. Install the configuration file for EAP: copy support/amqsupport/standalone.dv.xml to target/dv/standalone/configuration/standalone.xml
+4. Install the configuration file for EAP: copy support/amq-support/standalone.dv.xml to target/dv/standalone/configuration/standalone.xml
 
 4. Install the demo virtual database: copy support/dv-support/vdb to target/dv/standalone/deployments
 
