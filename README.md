@@ -146,7 +146,7 @@ The init.sh/init.bat files will be updated to complete these steps. To complete 
 
 2. Install mysql and postgres JDBC drivers into EAP: copy support/dv-support/modules/\* to target/dv/modules
 
-3. Install the users for A-MQ: copy support/users.properties to jboss-a-mq-6.2.0.redhat-133/etc/
+3. Install the users for A-MQ: copy support/amq-support/users.properties to jboss-a-mq-6.2.0.redhat-133/etc/
 
 4. Install the configuration file for EAP: copy support/amqsupport/standalone.dv.xml to target/dv/standalone/configuration/standalone.xml
 
