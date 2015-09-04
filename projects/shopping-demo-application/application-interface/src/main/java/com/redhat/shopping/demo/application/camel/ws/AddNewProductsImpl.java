@@ -20,7 +20,6 @@ import org.apache.log4j.Logger;
                       serviceName = "AddNewProductsService",
                       portName = "AddNewProductsPort",
                       targetNamespace = "http://ws.camel.application.demo.shopping.redhat.com/",
-                      wsdlLocation = "file:/C:/fuse-dv-shopping-integration-demo/projects/shopping-demo-application/application-interface/src/main/resources/wsdl/AddNewProductsService.wsdl",
                       endpointInterface = "com.redhat.shopping.demo.application.camel.ws.AddNewProducts")
                       
 public class AddNewProductsImpl implements AddNewProducts {
